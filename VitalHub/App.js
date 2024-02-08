@@ -16,8 +16,13 @@ import {
   MontserratAlternates_600SemiBold,
   MontserratAlternates_500Medium
 } from '@expo-google-fonts/montserrat-alternates';
-import { Quicksand_500Medium } from '@expo-google-fonts/quicksand';
+
+import { Quicksand_500Medium, Quicksand_600SemiBold } from '@expo-google-fonts/quicksand';
 import { VerificarEmail } from './src/screens/VerificarEmail/VerificarEmail';
+import { RedefinirSenha } from './src/screens/RedefinirSenha/RedefinirSenha';
+import { CriarConta } from './src/screens/CriarConta/CriarConta';
+import { Testes } from './src/screens/Testes/Testes';
+
 
 
 export default function App() {
@@ -26,7 +31,8 @@ export default function App() {
     MontserratAlternates_700Bold,
     MontserratAlternates_600SemiBold,
     MontserratAlternates_500Medium,
-    Quicksand_500Medium
+    Quicksand_500Medium,
+    Quicksand_600SemiBold
   })
 
   if (!fontsLoaded && !fontsError) {
@@ -69,6 +75,24 @@ export default function App() {
             name='VerificarEmail'
             component={VerificarEmail}
             options={{title: 'VerificarSenha'}}
+          />
+
+          <Stack.Screen
+            name='RedefinirSenha'
+            component={RedefinirSenha}
+            options={{title: 'RedefinirSenha'}}
+          />
+
+          <Stack.Screen
+            name='CriarConta'
+            component={CriarConta}
+            options={{title: 'CriarConta'}}
+          />
+
+          <Stack.Screen
+            name='Testes'
+            component={Testes}
+            options={{title: 'Testes'}}
           />
 
         </Stack.Navigator>

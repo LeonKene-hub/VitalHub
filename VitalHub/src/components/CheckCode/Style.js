@@ -15,5 +15,6 @@ export const CheckCode = styled.TextInput.attrs({
     border: 2px solid #77CACF;
     border-radius: 5px;
     font-size: 40px;
-    padding-left: 22px;
+    /* padding-left: 22px; */
+    text-align: center;
 `
