@@ -22,7 +22,7 @@ import { VerificarEmail } from './src/screens/VerificarEmail/VerificarEmail';
 import { RedefinirSenha } from './src/screens/RedefinirSenha/RedefinirSenha';
 import { CriarConta } from './src/screens/CriarConta/CriarConta';
 import { Testes } from './src/screens/Testes/Testes';
-
+import { Perfil } from './src/screens/Perfil/Perfil';
 
 
 export default function App() {
@@ -93,6 +93,12 @@ export default function App() {
             name='Testes'
             component={Testes}
             options={{title: 'Testes'}}
+          />
+
+          <Stack.Screen
+            name='Perfil'
+            component={Perfil}
+            options={{title: 'Perfil'}}
           />
 
         </Stack.Navigator>

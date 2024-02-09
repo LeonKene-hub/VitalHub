@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const Button = styled.TouchableOpacity`
-    width: 90%;
+    width: ${props => `${props.fieldWidth}%`};
     height: 53px;
     background-color: #496BBA;
     border: #496BBA;

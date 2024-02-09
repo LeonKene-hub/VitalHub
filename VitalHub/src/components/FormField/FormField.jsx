@@ -21,11 +21,10 @@ export const FormField = ({
 
             <InputContent
                 multiline={true}
-                KeyType={KeyType}
+                keyboardType={KeyType}
                 value={fieldValue}
                 editable={editable}
                 maxLenght={maxLenght}
-                fieldWidth={fieldWidth}
                 placeholder={placeholder}
                 onChangeText={onChangeText}
             />

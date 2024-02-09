@@ -6,4 +6,5 @@ export const Paragraph = styled.Text`
     line-height: 24px;
     text-align: center;
     margin-top: 15px;
+    margin-bottom: 10px;
 `
