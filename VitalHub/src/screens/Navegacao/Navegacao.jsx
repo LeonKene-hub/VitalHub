@@ -1,4 +1,5 @@
 import { Button, View } from "react-native";
+import { Title } from "../../components/Title/Style";
 
 export const Navegacao = ({ navigation }) => {
     return (
@@ -33,6 +34,7 @@ export const Navegacao = ({ navigation }) => {
                 onPress={() => navigation.navigate('Testes')}
             />
 
+            <Title> Dentro do app</Title>
             <Button
                 title="Perfil"
                 onPress={() => navigation.navigate('Perfil')}

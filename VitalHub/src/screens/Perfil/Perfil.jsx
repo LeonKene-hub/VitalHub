@@ -6,8 +6,13 @@ import { FormField } from "../../components/FormField/FormField"
 import { ScrollForm } from "../../components/ScrollForm/Style"
 import { NormalButton } from "../../components/Button/Buttons"
 import { View } from "react-native"
+import { useState } from "react"
 
 export const Perfil = () => {
+
+    const [formEdit, setFormEdit] = useState(false);
+
+
     return (
         <Container>
             <ScrollForm>
@@ -17,17 +22,17 @@ export const Perfil = () => {
                     <Title>Nome do paciente</Title>
                     <Paragraph>paciente@gmail.com</Paragraph>
 
-                    <FormField fieldWidth={90} labelText="Data de nascimento" />
-                    <FormField fieldWidth={90} labelText="CPF" />
-                    <FormField fieldWidth={90} labelText="Endereco" />
+                    <FormField fieldWidth={90} editable={formEdit} labelText="Data de nascimento" />
+                    <FormField fieldWidth={90} editable={formEdit} labelText="CPF" />
+                    <FormField fieldWidth={90} editable={formEdit} labelText="Endereco" />
 
                     <View style={{width: "90%", justifyContent: "space-between", flexDirection: "row"}}>
-                        <FormField fieldWidth={45} labelText="Cep" />
-                        <FormField fieldWidth={45} labelText="Cidade" />
+                        <FormField fieldWidth={45} editable={formEdit} labelText="Cep" />
+                        <FormField fieldWidth={45} editable={formEdit} labelText="Cidade" />
                     </View>
 
-                    <NormalButton title={"Salvar"} fieldWidth={90} />
-                    <NormalButton title={"editar"} fieldWidth={90} />
+                    <NormalButton title={"Salvar"} onPress={() => {setFormEdit(false)}} fieldWidth={90} />
+                    <NormalButton title={"editar"} onPress={() => {setFormEdit(true)}} fieldWidth={90} />
 
                 </View>
             </ScrollForm>

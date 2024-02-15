@@ -1,10 +1,10 @@
 import { Container } from "../../components/Container/Style"
-import { FormField } from "../../components/FormField/FormField"
+import { Header } from "../../components/Header/Header"
 
 export const Testes = () => {
     return(
         <Container>
-            <FormField/>
+            <Header/>
         </Container>
     )
 }
