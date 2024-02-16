@@ -1,4 +1,5 @@
 import { Button, ButtonTitle, ButtonGoogle, ButtonGoogleTitle } from "./Style"
+// import { AntDesign } from '@expo/vector-icons';
 
 export const NormalButton = ({
     title,
@@ -19,6 +20,7 @@ export const GoogleButton = ({
 }) => {
     return(
         <ButtonGoogle fieldWidth={fieldWidth} onPress={onPress}>
+            {/* <AntDesign name="google" size={24} color="#496BBA" /> */}
             <ButtonGoogleTitle>{title}</ButtonGoogleTitle>
         </ButtonGoogle>
     )

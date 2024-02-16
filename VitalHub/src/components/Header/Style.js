@@ -20,28 +20,25 @@ export const Line = styled.View`
     justify-content: space-between;
     align-items: center;
     flex-direction: row;
-    //border: 1px solid black;
+    padding-top: 35px;
 `
 
 export const BoxUser = styled.View`
     width: 70%;
     height: 60px;
     flex-direction: row;
-    //border: 1px solid orange;
 `
 
 export const ImageUser = styled.Image`
     width: 60px;
     height: 60px;
     border-radius: 5px;
-    //border: 1px solid green;
 `
 
 export const DataUser = styled.View`
     height: 60px;
     margin-left: 10px;
     justify-content: center;
-    //border: 1px solid red;
 `
 
 export const Wellcome = styled.Text`

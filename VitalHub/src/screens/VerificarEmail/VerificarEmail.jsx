@@ -1,4 +1,4 @@
-import { Button, ButtonTitle } from "../../components/Button/Style"
+import { NormalButton } from "../../components/Button/Buttons"
 import { CheckCode, CheckCodeBox } from "../../components/CheckCode/Style"
 import { Container } from "../../components/Container/Style"
 import { BackgroundOption, ContainerLogo } from "../../components/ContainerLogo/Style"
@@ -31,9 +31,7 @@ export const VerificarEmail = () => {
                 <CheckCode placeholder='0' keyboardType="numeric" maxLength={1} />
             </CheckCodeBox>
 
-            <Button>
-                <ButtonTitle>Verificar</ButtonTitle>
-            </Button>
+            <NormalButton title={"Verificar"} fieldWidth={90}/>
 
             <ContentAccount>
                 <TextAccountLink>Reenviar Codigo</TextAccountLink>

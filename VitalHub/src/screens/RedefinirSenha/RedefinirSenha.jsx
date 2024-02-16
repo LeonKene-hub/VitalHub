@@ -3,9 +3,9 @@ import { Logo } from "../../components/Logo/Style"
 import { Title } from "../../components/Title/Style"
 import { Paragraph } from "../../components/Paragraph/Style"
 import { Input } from "../../components/Input/Style"
-import {Button, ButtonTitle} from "../../components/Button/Style"
 import { BackgroundOption, ContainerLogo } from "../../components/ContainerLogo/Style"
 import { AntDesign } from '@expo/vector-icons';
+import { NormalButton } from "../../components/Button/Buttons"
 
 
 export const RedefinirSenha = () => {
@@ -26,9 +26,7 @@ export const RedefinirSenha = () => {
             <Input placeholder="Nova Senha"/>
             <Input placeholder="Confirmar nova senha"/>
 
-            <Button>
-                <ButtonTitle>Confirmar sua senha</ButtonTitle>
-            </Button>
+            <NormalButton title={"Confirme a sua senha"} fieldWidth={90}/>
 
         </Container>
     )

@@ -1,4 +1,4 @@
-import { Button, ButtonTitle } from "../../components/Button/Style"
+import { NormalButton } from "../../components/Button/Buttons"
 import { Container } from "../../components/Container/Style"
 import { BackgroundOption, ContainerLogo } from "../../components/ContainerLogo/Style"
 import { Input } from "../../components/Input/Style"
@@ -27,9 +27,7 @@ export const RecuperarSenha = () => {
                 placeholder={'Usuário ou Email'}
             />
 
-            <Button>
-                <ButtonTitle>Continuar</ButtonTitle>
-            </Button>
+            <NormalButton title={"Continuar"} fieldWidth={90}/>
         </Container>
     )
 }

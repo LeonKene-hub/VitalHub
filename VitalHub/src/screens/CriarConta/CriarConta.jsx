@@ -1,4 +1,4 @@
-import { Button, ButtonTitle } from "../../components/Button/Style"
+import { NormalButton } from "../../components/Button/Buttons"
 import { Container } from "../../components/Container/Style"
 import { ContentAccount, TextAccountLink } from "../../components/ContentAccount/Style"
 import { Input } from "../../components/Input/Style"
@@ -19,9 +19,7 @@ export const CriarConta = () => {
             <Input placeholder="Senha"/>
             <Input placeholder="Confirmar Senha"/>
 
-            <Button>
-                <ButtonTitle>Cadastrar</ButtonTitle>
-            </Button>
+            <NormalButton title={"Cadastrar"} fieldWidth={90}/>
 
             <ContentAccount>
                 <TextAccountLink>Reenviar Código</TextAccountLink>

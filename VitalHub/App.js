@@ -46,9 +46,8 @@ export default function App() {
       //StackScreen
 
       <NavigationContainer>
-
         {/* Componente para navegacao */}
-        <Stack.Navigator>
+        <Stack.Navigator screenOptions={{headerShown: false}}>
 
           <Stack.Screen
             //nome tela

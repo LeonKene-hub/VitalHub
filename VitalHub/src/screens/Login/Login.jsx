@@ -1,12 +1,10 @@
-import { Image } from "react-native"
-import { Button, ButtonGoogle, ButtonGoogleTitle, ButtonTitle } from "../../components/Button/Style"
 import { Container } from "../../components/Container/Style"
 import { Input } from "../../components/Input/Style"
 import { LinkMedium } from "../../components/Links/Style"
 import { Logo } from "../../components/Logo/Style"
 import { Title } from "../../components/Title/Style"
-import { AntDesign } from '@expo/vector-icons';
 import { ContentAccount, TextAccount, TextAccountLink } from "../../components/ContentAccount/Style"
+import { GoogleButton, NormalButton } from "../../components/Button/Buttons"
 
 export const Login = () => {
     return(
@@ -27,14 +25,9 @@ export const Login = () => {
 
             <LinkMedium>Esqueceu sua senha?</LinkMedium>
 
-            <Button>
-                <ButtonTitle>Entrar</ButtonTitle>
-            </Button>
+            <NormalButton title={"Entrar"} fieldWidth={90}/>
 
-            <ButtonGoogle>
-                <AntDesign name="google" size={24} color="#496BBA" />
-                <ButtonGoogleTitle>Entrar com Google</ButtonGoogleTitle>
-            </ButtonGoogle>
+            <GoogleButton title={"Entrar com Google"} fieldWidth={90}/>
 
             <ContentAccount>
                 <TextAccount>Nao tem conta? <TextAccountLink>Crie uma conta agora!</TextAccountLink></TextAccount>
