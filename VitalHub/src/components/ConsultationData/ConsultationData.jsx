@@ -1,9 +1,14 @@
 import { Age, Appointment, CardBoby, CardContainer, CardInfo, CardOptions, Data, Hour, ImageUserCard, InfoBox, Name, Option, OptionText, TypeConsul } from "./Style"
 import { MaterialIcons } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
-import { Text } from "react-native";
 
-export const ConsultationData = () => {
+export const ConsultationData = ({
+    nome = "Beta Tester",
+    idade = 20,
+    tipoConsulta = "Rotina",
+    hora = "14:00",
+    opcao = "Cancelar"
+}) => {
     return (
         <CardBoby>
             <CardContainer>
@@ -11,22 +16,22 @@ export const ConsultationData = () => {
 
                 <CardInfo>
                     <InfoBox>
-                        <Name>Beta Tester</Name>
+                        <Name>{nome}</Name>
                         <Data>
-                            <Age>20 anos</Age>
+                            <Age>{idade} anos</Age>
                             <Fontisto name="ellipse" size={7} color="#D9D9D9" />
-                            <TypeConsul>Rotina</TypeConsul>
+                            <TypeConsul>{tipoConsulta}</TypeConsul>
                         </Data>
                     </InfoBox>
 
                     <CardOptions>
                         <Hour>
                             <MaterialIcons name="watch-later" size={14} color="#49B3BA" />
-                            <Appointment>14:00</Appointment>
+                            <Appointment> {hora} </Appointment>
                         </Hour>
 
                         <Option>
-                            <OptionText>Cancelar</OptionText>
+                            <OptionText> {opcao} </OptionText>
                         </Option>
                     </CardOptions>
                 </CardInfo>

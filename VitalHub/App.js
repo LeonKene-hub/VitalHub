@@ -23,6 +23,7 @@ import { RedefinirSenha } from './src/screens/RedefinirSenha/RedefinirSenha';
 import { CriarConta } from './src/screens/CriarConta/CriarConta';
 import { Testes } from './src/screens/Testes/Testes';
 import { Perfil } from './src/screens/Perfil/Perfil';
+import { Home } from './src/screens/Home/Home';
 
 
 export default function App() {
@@ -98,6 +99,12 @@ export default function App() {
             name='Perfil'
             component={Perfil}
             options={{title: 'Perfil'}}
+          />
+
+          <Stack.Screen
+            name='Home'
+            component={Home}
+            options={{title: 'Home'}}
           />
 
         </Stack.Navigator>

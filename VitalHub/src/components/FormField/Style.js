@@ -10,7 +10,6 @@ export const Label = styled.Text`
 `
 
 export const InputContent = styled.TextInput`
-    /* width: ${props => `${props.fieldWidth}%`}; */
     margin-top: 10px;
     background-color: ${props => props.editable ? "#FFFFFF" : "#F5F3F3"} ;
     border: ${props => props.editable ? "2px solid #60BFC5" : "none"} ;

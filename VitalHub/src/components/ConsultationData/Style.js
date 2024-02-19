@@ -9,6 +9,14 @@ export const CardBoby = styled.View`
     justify-content: center;
     align-items: center;
     box-shadow: 0px 0px 10px black;
+    margin: 8px 16px;
+    
+    box-shadow: 0px 0px 10px  black;
+    shadow-color: black;
+    shadow-offser: 0px 4px;
+    shadow-opacity: 0.15;
+    shadow-radius:15px;
+    elevation: 5;
 `
 export const CardContainer = styled.View`
     width: 90%;
