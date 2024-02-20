@@ -56,7 +56,7 @@ export const Hour = styled.View`
     width: 90px;
     height: 30px;
     border-radius: 5px;
-    background-color: #E8FCFD;
+    background-color: ${props => `#${props.color}`};
     flex-direction: row;
     align-items: center;
     justify-content: space-between;
@@ -65,7 +65,7 @@ export const Hour = styled.View`
 export const Appointment = styled.Text`
     font-size: 14px;
     font-family: "MontserratAlternates_600SemiBold";
-    color: #49B3BA;
+    color: ${props => `#${props.color}`} ;
     margin-left: 5px;
 `
 
@@ -73,7 +73,7 @@ export const Appointment = styled.Text`
 export const Option = styled.TouchableOpacity``
 
 export const OptionText = styled.Text`
-    color: red;
+    color: ${props => `#${props.color}`} ;
     font-size: 12px;
     font-family: "MontserratAlternates_500Medium";
 `
