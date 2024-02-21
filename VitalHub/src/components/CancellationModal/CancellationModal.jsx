@@ -6,7 +6,7 @@ import { TouchableOpacity } from "react-native"
 import { CenteredView, ModalBody, ModalContainer } from "./Style"
 
 
-export const ModalConsul = ({
+export const CancellationModal = ({
     title,
     paragraph,
     visible,

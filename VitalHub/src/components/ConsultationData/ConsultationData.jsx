@@ -3,14 +3,14 @@ import { MaterialIcons } from '@expo/vector-icons';
 import { Fontisto } from '@expo/vector-icons';
 
 export const ConsultationData = ({
-    color,
     situacao = "pendente",
     nome = "Beta Tester",
     idade = 20,
     tipoConsulta = "Rotina",
     hora = "14:00",
     onPressCancel,
-    onPressAppoiment
+    onPressAppoiment,
+    
 }) => {
     return (
         <CardBoby>
@@ -71,7 +71,7 @@ export const ConsultationData = ({
                                     situacao={situacao}
                                     color={"C81D25"}
                                 >
-                                    <OptionText> Cancelar </OptionText>
+                                    <OptionText situacao={situacao} color={"C81D25"}> Cancelar </OptionText>
                                 </Option>
 
                             ) : (
@@ -81,7 +81,7 @@ export const ConsultationData = ({
                                     situacao={situacao}
                                     color={"344F8F"}
                                 >
-                                    <OptionText> Ver Prontuario </OptionText>
+                                    <OptionText situacao={situacao} color={"344F8F"}> Ver Prontuario </OptionText>
                                 </Option>
 
                             )

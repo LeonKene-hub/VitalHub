@@ -5,7 +5,7 @@ import { OptionButtons } from "../../components/OptionButtons/OptionButtons"
 import { CardList, ContainerBox } from "./Style"
 import { ConsultationData } from "../../components/ConsultationData/ConsultationData"
 import { useState } from "react"
-import { ModalConsul } from "../../components/ModalConsul/ModalConsul"
+import { CancellationModal } from "../../components/CancellationModal/CancellationModal"
 
 export const Home = () => {
     const [statusLista, setStatusLista] = useState("pendente");
@@ -14,23 +14,28 @@ export const Home = () => {
     const dados = [
         {
             id: 1,
-            Nome: "1"
+            Nome: "1",
+            Situacao: "pendente"
         },
         {
             id: 2,
-            Nome: "2"
+            Nome: "2",
+            Situacao: "realizado"
         },
         {
             id: 3,
-            Nome: "3"
+            Nome: "3",
+            Situacao: "pendente"
         },
         {
             id: 4,
-            Nome: "4"
+            Nome: "4",
+            Situacao: "cancelado"
         },
         {
             id: 5,
-            Nome: "5"
+            Nome: "5",
+            Situacao: "realizado"
         },
     ]
 
@@ -61,15 +66,35 @@ export const Home = () => {
                     />
                 </ContainerBox>
 
-                <CardList
-                    data={dados}
-                    keyExtractor={(item) => item.id}
+                {
+                    statusLista == "pendente" ? (
 
-                    renderItem={({ item }) => <ConsultationData nome={item.Nome} onPress={() => setModalVisible(true)} />}
-                />
+                        <CardList
+                            data={dados}
+                            keyExtractor={(item) => item.id}
+                            renderItem={({ item}) => item.Situacao === "pendente" ? <ConsultationData nome={item.Nome} situacao={item.Situacao} onPressCancel={() => setModalVisible(true)}/> : <></>}
+                        />
+
+                    ) : statusLista == "realizado" ? (
+
+                        <CardList
+                            data={dados}
+                            keyExtractor={(item) => item.id}
+                            renderItem={({ item}) => item.Situacao === "realizado" ? <ConsultationData nome={item.Nome} situacao={item.Situacao} onPressAppoiment={() => setModalVisible(true)}/> : <></>}
+                        />
+
+                    ) : (
+
+                        <CardList
+                            data={dados}
+                            keyExtractor={(item) => item.id}
+                            renderItem={({ item}) => item.Situacao === "cancelado" ? <ConsultationData nome={item.Nome} situacao={item.Situacao}/> : <></>}
+                        />
+                    )
+                }
 
             </Container>
-            <ModalConsul
+            <CancellationModal
                 visible={modalVisible}
                 onRequestClose={() => { setModalVisible(false) }}
                 tranparent={true}
