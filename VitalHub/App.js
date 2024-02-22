@@ -5,6 +5,14 @@ import { createNativeStackNavigator } from '@react-navigation/native-stack';
 import { Navegacao } from './src/screens/Navegacao/Navegacao';
 import { Login } from './src/screens/Login/Login';
 import { RecuperarSenha } from './src/screens/RecuperarSenha/RecuperarSenha';
+import { Quicksand_500Medium, Quicksand_600SemiBold } from '@expo-google-fonts/quicksand';
+import { VerificarEmail } from './src/screens/VerificarEmail/VerificarEmail';
+import { RedefinirSenha } from './src/screens/RedefinirSenha/RedefinirSenha';
+import { CriarConta } from './src/screens/CriarConta/CriarConta';
+import { Testes } from './src/screens/Testes/Testes';
+import { Perfil } from './src/screens/Perfil/Perfil';
+import { Home_Medico } from './src/screens/Home_Medico/Home';
+import { Prontuario } from './src/screens/Prontuario_Medico/Prontuario'
 
 //instancia do StackNavigator
 const Stack = createNativeStackNavigator();
@@ -16,14 +24,7 @@ import {
   MontserratAlternates_600SemiBold,
   MontserratAlternates_500Medium
 } from '@expo-google-fonts/montserrat-alternates';
-
-import { Quicksand_500Medium, Quicksand_600SemiBold } from '@expo-google-fonts/quicksand';
-import { VerificarEmail } from './src/screens/VerificarEmail/VerificarEmail';
-import { RedefinirSenha } from './src/screens/RedefinirSenha/RedefinirSenha';
-import { CriarConta } from './src/screens/CriarConta/CriarConta';
-import { Testes } from './src/screens/Testes/Testes';
-import { Perfil } from './src/screens/Perfil/Perfil';
-import { Home } from './src/screens/Home/Home';
+import { Home_Paciente } from './src/screens/Home_Paciente/Home';
 
 
 export default function App() {
@@ -90,21 +91,27 @@ export default function App() {
           />
 
           <Stack.Screen
-            name='Testes'
-            component={Testes}
-            options={{title: 'Testes'}}
-          />
-
-          <Stack.Screen
             name='Perfil'
             component={Perfil}
             options={{title: 'Perfil'}}
           />
 
           <Stack.Screen
-            name='Home'
-            component={Home}
-            options={{title: 'Home'}}
+            name='Home_Medico'
+            component={Home_Medico}
+            options={{title: 'Home_Medico'}}
+          />
+
+          <Stack.Screen
+            name='Home_Paciente'
+            component={Home_Paciente}
+            options={{title: 'Home_Paciente'}}
+          />
+
+          <Stack.Screen
+            name='Prontuario'
+            component={Prontuario}
+            options={{title: 'Prontuario'}}
           />
 
         </Stack.Navigator>

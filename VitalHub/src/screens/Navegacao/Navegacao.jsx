@@ -29,11 +29,6 @@ export const Navegacao = ({ navigation }) => {
                 onPress={() => navigation.navigate('CriarConta')}
             />
 
-            <Button
-                title="Testes"
-                onPress={() => navigation.navigate('Testes')}
-            />
-
             <Title> Dentro do app</Title>
             <Button
                 title="Perfil"
@@ -41,8 +36,18 @@ export const Navegacao = ({ navigation }) => {
             />
 
             <Button
-                title="Home"
-                onPress={() => navigation.navigate('Home')}
+                title="Home_Medico"
+                onPress={() => navigation.navigate('Home_Medico')}
+            />
+
+            <Button
+                title="Home_Paciente"
+                onPress={() => navigation.navigate('Home_Paciente')}
+            />
+
+            <Button
+                title="Prontuario"
+                onPress={() => navigation.navigate('Prontuario')}
             />
         </View>
     );

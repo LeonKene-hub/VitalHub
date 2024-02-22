@@ -9,7 +9,9 @@ export const Label = styled.Text`
     font-family: "Quicksand_600SemiBold";
 `
 
-export const InputContent = styled.TextInput`
+export const InputContent = styled.TextInput.attrs({
+    placeholderTextColor: '#77CACF'
+})`
     margin-top: 10px;
     background-color: ${props => props.editable ? "#FFFFFF" : "#F5F3F3"} ;
     border: ${props => props.editable ? "2px solid #60BFC5" : "none"} ;

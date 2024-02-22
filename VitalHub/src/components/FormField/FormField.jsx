@@ -25,8 +25,9 @@ export const FormField = ({
                 value={fieldValue}
                 editable={editable}
                 maxLenght={maxLenght}
-                placeholder={placeholder}
                 onChangeText={onChangeText}
+                
+                {...editable ? (placeholder={placeholder}) : (placeholder="")}
             />
         </ContentBox>
     )
