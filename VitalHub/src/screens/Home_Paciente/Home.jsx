@@ -1,6 +1,7 @@
 import { CancellationModal } from "../../components/CancellationModal/CancellationModal"
 import { ConsultationData } from "../../components/ConsultationData/ConsultationData"
 import { PromptuaryModal } from "../../components/PromptuaryModal/PromptuaryModal"
+import { NewConsulModal } from "../../components/NewConsulModal/NewConsulModal"
 import { OptionButtons } from "../../components/OptionButtons/OptionButtons"
 import { CalendarHome } from "../../components/CalendarHome/CalendarHome"
 import { Container } from "../../components/Container/Style"
@@ -11,8 +12,12 @@ import { useState } from "react"
 
 export const Home_Paciente = () => {
     const [statusLista, setStatusLista] = useState("pendente");
+
     const [modalCancel, setModalCancel] = useState(false);
     const [modalPromptuary, setModalPromptuary] = useState(false);
+    const [modalNewConsul, setModalNewConsul] = useState(false);
+
+
     const [idEncontrado, setIdEncontrado] = useState("");
 
     const dados = [
@@ -110,8 +115,8 @@ export const Home_Paciente = () => {
                     )
                 }
                 {/* adicionar consulta */}
-                <NewConsul>
-                    <MaterialCommunityIcons name="stethoscope" size={32} color="#FBFBFB"/>
+                <NewConsul onPress={() => setModalNewConsul(true)}>
+                    <MaterialCommunityIcons name="stethoscope" size={32} color="#FBFBFB" />
                 </NewConsul>
 
             </Container>
@@ -130,6 +135,10 @@ export const Home_Paciente = () => {
                 name={idEncontrado.Nome}
                 age={idEncontrado.Idade}
                 email={idEncontrado.Email}
+            />
+            <NewConsulModal
+                visible={modalNewConsul}
+                onRequestClose={() => { setModalNewConsul(false) }}
             />
         </>
     )

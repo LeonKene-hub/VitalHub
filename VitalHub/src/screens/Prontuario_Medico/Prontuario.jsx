@@ -1,13 +1,13 @@
-import { Container } from "../../components/Container/Style"
-import { ProfilePic } from "../../components/Profile/Style"
-import { Title } from "../../components/Title/Style"
-import { Paragraph } from "../../components/Paragraph/Style"
 import { FormField } from "../../components/FormField/FormField"
 import { ScrollForm } from "../../components/ScrollForm/Style"
 import { NormalButton } from "../../components/Button/Buttons"
-import { TouchableOpacity, View } from "react-native"
-import { useState } from "react"
+import { Paragraph } from "../../components/Paragraph/Style"
+import { Container } from "../../components/Container/Style"
+import { ProfilePic } from "../../components/Profile/Style"
 import { LinkMedium } from "../../components/Links/Style"
+import { TouchableOpacity, View } from "react-native"
+import { Title } from "../../components/Title/Style"
+import { useState } from "react"
 
 export const Prontuario = () => {
 

@@ -1,12 +1,12 @@
+import { CancellationModal } from "../../components/CancellationModal/CancellationModal"
+import { ConsultationData } from "../../components/ConsultationData/ConsultationData"
+import { PromptuaryModal } from "../../components/PromptuaryModal/PromptuaryModal"
+import { OptionButtons } from "../../components/OptionButtons/OptionButtons"
 import { CalendarHome } from "../../components/CalendarHome/CalendarHome"
 import { Container } from "../../components/Container/Style"
 import { Header } from "../../components/Header/Header"
-import { OptionButtons } from "../../components/OptionButtons/OptionButtons"
 import { CardList, ContainerBox } from "./Style"
-import { ConsultationData } from "../../components/ConsultationData/ConsultationData"
 import { useState } from "react"
-import { CancellationModal } from "../../components/CancellationModal/CancellationModal"
-import { PromptuaryModal } from "../../components/PromptuaryModal/PromptuaryModal"
 
 export const Home_Medico = () => {
     const [statusLista, setStatusLista] = useState("pendente");

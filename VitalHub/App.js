@@ -9,7 +9,6 @@ import { Quicksand_500Medium, Quicksand_600SemiBold } from '@expo-google-fonts/q
 import { VerificarEmail } from './src/screens/VerificarEmail/VerificarEmail';
 import { RedefinirSenha } from './src/screens/RedefinirSenha/RedefinirSenha';
 import { CriarConta } from './src/screens/CriarConta/CriarConta';
-import { Testes } from './src/screens/Testes/Testes';
 import { Perfil } from './src/screens/Perfil/Perfil';
 import { Home_Medico } from './src/screens/Home_Medico/Home';
 import { Prontuario } from './src/screens/Prontuario_Medico/Prontuario'

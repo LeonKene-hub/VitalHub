@@ -10,10 +10,15 @@ export const ConsultationData = ({
     hora = "14:00",
     onPressCancel,
     onPressAppoiment,
+    onPressCard
     
 }) => {
     return (
-        <CardBoby>
+        <CardBoby 
+            onPress={onPressCard}
+            activeOpacity={0.3}
+            underlayColor="#DDDDDD"
+        >
             <CardContainer>
                 <ImageUserCard source={{ uri: "https://github.com/LeonKene-hub.png" }} />
 

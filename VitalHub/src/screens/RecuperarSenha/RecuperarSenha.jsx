@@ -1,10 +1,10 @@
-import { NormalButton } from "../../components/Button/Buttons"
-import { Container } from "../../components/Container/Style"
 import { BackgroundOption, ContainerLogo } from "../../components/ContainerLogo/Style"
+import { NormalButton } from "../../components/Button/Buttons"
+import { Paragraph } from "../../components/Paragraph/Style"
+import { Container } from "../../components/Container/Style"
+import { Title } from "../../components/Title/Style"
 import { Input } from "../../components/Input/Style"
 import { Logo } from "../../components/Logo/Style"
-import { Paragraph } from "../../components/Paragraph/Style"
-import { Title } from "../../components/Title/Style"
 import { AntDesign } from '@expo/vector-icons';
 
 
@@ -27,7 +27,7 @@ export const RecuperarSenha = () => {
                 placeholder={'Usuário ou Email'}
             />
 
-            <NormalButton title={"Continuar"} fieldWidth={90}/>
+            <NormalButton title={"Continuar"} fieldWidth={90} />
         </Container>
     )
 }

@@ -1,11 +1,11 @@
-import { NormalButton } from "../../components/Button/Buttons"
-import { CheckCode, CheckCodeBox } from "../../components/CheckCode/Style"
-import { Container } from "../../components/Container/Style"
 import { BackgroundOption, ContainerLogo } from "../../components/ContainerLogo/Style"
 import { ContentAccount, TextAccountLink } from "../../components/ContentAccount/Style"
-import { Logo } from "../../components/Logo/Style"
+import { CheckCode, CheckCodeBox } from "../../components/CheckCode/Style"
+import { NormalButton } from "../../components/Button/Buttons"
+import { Container } from "../../components/Container/Style"
 import { Paragraph } from "../../components/Paragraph/Style"
 import { Title } from "../../components/Title/Style"
+import { Logo } from "../../components/Logo/Style"
 import { AntDesign } from '@expo/vector-icons';
 
 
@@ -31,7 +31,7 @@ export const VerificarEmail = () => {
                 <CheckCode placeholder='0' keyboardType="numeric" maxLength={1} />
             </CheckCodeBox>
 
-            <NormalButton title={"Verificar"} fieldWidth={90}/>
+            <NormalButton title={"Verificar"} fieldWidth={90} />
 
             <ContentAccount>
                 <TextAccountLink>Reenviar Codigo</TextAccountLink>

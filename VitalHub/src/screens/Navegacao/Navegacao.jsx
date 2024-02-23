@@ -1,5 +1,5 @@
-import { Button, View } from "react-native";
 import { Title } from "../../components/Title/Style";
+import { Button, View } from "react-native";
 
 export const Navegacao = ({ navigation }) => {
     return (

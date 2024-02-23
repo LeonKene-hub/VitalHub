@@ -1,15 +1,15 @@
-import { Container } from "../../components/Container/Style"
-import { Logo } from "../../components/Logo/Style"
-import { Title } from "../../components/Title/Style"
-import { Paragraph } from "../../components/Paragraph/Style"
-import { Input } from "../../components/Input/Style"
 import { BackgroundOption, ContainerLogo } from "../../components/ContainerLogo/Style"
-import { AntDesign } from '@expo/vector-icons';
 import { NormalButton } from "../../components/Button/Buttons"
+import { Container } from "../../components/Container/Style"
+import { Paragraph } from "../../components/Paragraph/Style"
+import { Title } from "../../components/Title/Style"
+import { Input } from "../../components/Input/Style"
+import { Logo } from "../../components/Logo/Style"
+import { AntDesign } from '@expo/vector-icons';
 
 
 export const RedefinirSenha = () => {
-    return(
+    return (
         <Container>
             <ContainerLogo>
                 <BackgroundOption>
@@ -23,10 +23,10 @@ export const RedefinirSenha = () => {
 
             <Paragraph>Insira e confirme a sua nova senha</Paragraph>
 
-            <Input placeholder="Nova Senha"/>
-            <Input placeholder="Confirmar nova senha"/>
+            <Input placeholder="Nova Senha" />
+            <Input placeholder="Confirmar nova senha" />
 
-            <NormalButton title={"Confirme a sua senha"} fieldWidth={90}/>
+            <NormalButton title={"Confirme a sua senha"} fieldWidth={90} />
 
         </Container>
     )

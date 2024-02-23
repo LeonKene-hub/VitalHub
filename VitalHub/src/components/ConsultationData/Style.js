@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 //corpo
-export const CardBoby = styled.View`
+export const CardBoby = styled.TouchableHighlight`
     width: 90%;
     height: 105px;
     background-color: #FFFFFF;
