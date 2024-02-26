@@ -9,6 +9,7 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { CardList, ContainerBox, NewConsul } from "./Style"
 import { Header } from "../../components/Header/Header"
 import { useState } from "react"
+import { DoctorModal } from "../../components/DoctorModal/DoctorModal"
 
 export const Home_Paciente = () => {
     const [statusLista, setStatusLista] = useState("pendente");
@@ -16,6 +17,7 @@ export const Home_Paciente = () => {
     const [modalCancel, setModalCancel] = useState(false);
     const [modalPromptuary, setModalPromptuary] = useState(false);
     const [modalNewConsul, setModalNewConsul] = useState(false);
+    const [modalDoctor, setModalDoctor] = useState(false);
 
 
     const [idEncontrado, setIdEncontrado] = useState("");
@@ -91,7 +93,13 @@ export const Home_Paciente = () => {
                         <CardList
                             data={dados}
                             keyExtractor={(item) => item.id}
-                            renderItem={({ item }) => item.Situacao === "pendente" ? <ConsultationData nome={item.Nome} situacao={item.Situacao} onPressCancel={() => setModalCancel(true)} /> : <></>}
+                            renderItem={({ item }) => item.Situacao === "pendente" ?
+                                <ConsultationData
+                                    nome={item.Nome}
+                                    situacao={item.Situacao}
+                                    onPressCancel={() => setModalCancel(true)}
+                                    onPressCard={() => {setModalDoctor(true); setIdEncontrado(item);}}
+                                /> : <></>}
                         />
 
                     ) : statusLista == "realizado" ? (
@@ -99,10 +107,12 @@ export const Home_Paciente = () => {
                         <CardList
                             data={dados}
                             keyExtractor={(item) => item.id}
-                            renderItem={({ item }) => item.Situacao === "realizado" ? <ConsultationData nome={item.Nome} situacao={item.Situacao} onPressAppoiment={() => {
-                                setModalPromptuary(true);
-                                setIdEncontrado(item);
-                            }} /> : <></>}
+                            renderItem={({ item }) => item.Situacao === "realizado" ?
+                                <ConsultationData
+                                    nome={item.Nome}
+                                    situacao={item.Situacao}
+                                    onPressAppoiment={() => { setModalPromptuary(true); setIdEncontrado(item); }}
+                                /> : <></>}
                         />
 
                     ) : (
@@ -110,7 +120,11 @@ export const Home_Paciente = () => {
                         <CardList
                             data={dados}
                             keyExtractor={(item) => item.id}
-                            renderItem={({ item }) => item.Situacao === "cancelado" ? <ConsultationData nome={item.Nome} situacao={item.Situacao} /> : <></>}
+                            renderItem={({ item }) => item.Situacao === "cancelado" ? 
+                                <ConsultationData 
+                                    nome={item.Nome} 
+                                    situacao={item.Situacao} 
+                                /> : <></>}
                         />
                     )
                 }
@@ -139,6 +153,11 @@ export const Home_Paciente = () => {
             <NewConsulModal
                 visible={modalNewConsul}
                 onRequestClose={() => { setModalNewConsul(false) }}
+            />
+            <DoctorModal
+                visible={modalDoctor}
+                onRequestClose={() => setModalDoctor(false)}
+                doctorName={idEncontrado.Nome}
             />
         </>
     )

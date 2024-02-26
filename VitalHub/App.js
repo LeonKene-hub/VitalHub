@@ -24,6 +24,7 @@ import {
   MontserratAlternates_500Medium
 } from '@expo-google-fonts/montserrat-alternates';
 import { Home_Paciente } from './src/screens/Home_Paciente/Home';
+import { AgendarConsulta } from './src/screens/AgendarConsulta/AgendarConsulta';
 
 
 export default function App() {
@@ -111,6 +112,12 @@ export default function App() {
             name='Prontuario'
             component={Prontuario}
             options={{title: 'Prontuario'}}
+          />
+
+          <Stack.Screen
+            name='AgendarConsulta'
+            component={AgendarConsulta}
+            options={{title: 'AgendarConsulta'}}
           />
 
         </Stack.Navigator>

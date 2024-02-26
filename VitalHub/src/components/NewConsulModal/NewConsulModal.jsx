@@ -1,15 +1,22 @@
 import { TouchableOpacity } from "react-native"
 import { NormalButton } from "../Button/Buttons"
-import { FormChoice, FormField } from "../FormField/FormField"
+import { FormField } from "../FormField/FormField"
 import { LinkMedium } from "../Links/Style"
 import { Title } from "../Title/Style"
-import { ConsulLevel, ConsulLocal, ContainerView, ModalConsul} from "./Style"
+import { ConsulLevel, ConsulLocal, ContainerChoice, ContainerView, ModalConsul} from "./Style"
+import { ContainerBox } from "../../screens/Home_Paciente/Style"
+import { FormChoice } from "../FormChoice/FormChoice"
+import { useState } from "react"
+import { Label } from "../FormField/Style"
 
 
 export const NewConsulModal = ({
     visible,
     onRequestClose
 }) => {
+
+    const [status, setStatus] = useState()
+
     return (
         <ModalConsul
             isVisible={visible}
@@ -17,17 +24,26 @@ export const NewConsulModal = ({
             <ContainerView>
                 <Title>Agendar consulta</Title>
 
+
                 <ConsulLevel>
-                    <FormChoice 
-                        fieldWidth={90}
-                        labelText={"Qual o nível da consulta"}
-                    />
-                    {/* <FormField
-                        editable={true}
-                        fieldWidth={90}
-                        placeholder={"Rotina, Exame, Urgência"}
-                        labelText="Qual o nível da consulta"
-                    /> */}
+                    <Label>Qual o nível da consulta</Label>
+                    <ContainerChoice>
+                        <FormChoice
+                            textButton={"Rotina"}
+                            actived={status === "Rotina"}
+                            onPress={() => setStatus("Rotina")}
+                        />
+                        <FormChoice
+                            textButton={"Exame"}
+                            actived={status === "Exame"}
+                            onPress={() => setStatus("Exame")}
+                        />
+                        <FormChoice
+                            textButton={"Urgência"}
+                            actived={status === "Urgência"}
+                            onPress={() => setStatus("Urgência")}
+                        />
+                    </ContainerChoice>
                 </ConsulLevel>
 
                 <ConsulLocal>

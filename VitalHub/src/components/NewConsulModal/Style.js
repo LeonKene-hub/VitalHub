@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import Modal from "react-native-modal";
 
-export const ModalConsul =styled(Modal)`
+export const ModalConsul = styled(Modal)`
     height: 60%;
     width: 100%;
     background-color: #FBFBFB;
@@ -20,10 +20,16 @@ export const ContainerView = styled.View`
     justify-content: space-between;
 `
 export const ConsulLevel = styled.View`
-    width: 100%;
-    align-items: center;
+    width: 90%;
+    justify-content: space-between;
 `
+
 export const ConsulLocal = styled.View`
     width: 100%;
     align-items: center;
+`
+export const ContainerChoice = styled.View`
+    flex-direction: row;
+    justify-content: space-between;
+    margin-top: 10px;
 `

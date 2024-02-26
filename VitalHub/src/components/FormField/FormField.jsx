@@ -1,4 +1,4 @@
-import { Choice, ChoiceText, ContentBox, InputContent, Label, SelectBox } from "./Style"
+import { ContentBox, InputContent, Label} from "./Style"
 
 
 export const FormField = ({
@@ -29,30 +29,6 @@ export const FormField = ({
 
                 {...editable ? (placeholder = { placeholder }) : (placeholder = "")}
             />
-        </ContentBox>
-    )
-}//============================================================================================================
-export const FormChoice = ({
-    fieldWidth = 100,
-    labelText
-}) => {
-    return (
-        <ContentBox fieldWidth={fieldWidth}>
-            <Label>
-                {labelText}
-            </Label>
-
-            <SelectBox>
-                <Choice>
-                    <ChoiceText>Rotina</ChoiceText>
-                </Choice>
-                <Choice>
-                    <ChoiceText>Exame</ChoiceText>
-                </Choice>
-                <Choice>
-                    <ChoiceText>Urgencia</ChoiceText>
-                </Choice>
-            </SelectBox>
         </ContentBox>
     )
 }
