@@ -9,7 +9,7 @@ export const Body = styled.View`
 `
 
 export const RenderInside = styled.View`
-    border: 1px solid blue;
+    //border: 1px solid blue;
     //height: 70%;
     width: 100%;
     flex: 1;
