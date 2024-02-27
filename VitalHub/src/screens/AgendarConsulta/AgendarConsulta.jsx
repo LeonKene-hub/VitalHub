@@ -8,6 +8,7 @@ import { CardList } from "../Home_Paciente/Style"
 import { TouchableOpacity } from "react-native"
 import { Body, RenderInside } from "./Style"
 import { useState } from "react"
+import { CalendarApp } from "../../components/CalendarApp/CalendarApp"
 
 export const AgendarConsulta = ({ }) => {
 
@@ -66,7 +67,9 @@ export const AgendarConsulta = ({ }) => {
                                         onPress={() => medicoSelected == item.id ? setMedicoSelected(item.id) : setMedicoSelected(item.id)}
                                     />}
                             />
-                        ) : ("")
+                        ) : (
+                            <CalendarApp/>
+                        )
                     }
 
                     {/* <ClinicCard
