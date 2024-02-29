@@ -1,6 +1,9 @@
-import { useState } from "react";
 import { Calendar, LocaleConfig } from "react-native-calendars";
 import SelectDropdown from 'react-native-select-dropdown'
+import { StyleSheet } from "react-native-web";
+import { AntDesign } from '@expo/vector-icons';
+import { useState } from "react";
+import { SelectBox, SelectBoxTitle } from "./Style";
 
 
 export const CalendarApp = ({
@@ -30,7 +33,13 @@ export const CalendarApp = ({
 
 
     const [selected, setSelected] = useState('');
-    const countries = ["Egypt", "Canada", "Australia", "Ireland"]
+    const horarios = [
+        "11:00",
+        "12:00",
+        "13:00",
+        "14:00",
+        "15:00"
+    ]
 
     return (
         <>
@@ -42,22 +51,50 @@ export const CalendarApp = ({
                     [selected]: { selected: true, disableTouchEvent: true, selectedDotColor: 'orange' }
                 }}
             />
-            <SelectDropdown
-                data={countries}
-                onSelect={(selectedItem, index) => {
-                    console.log(selectedItem, index)
-                }}
-                buttonTextAfterSelection={(selectedItem, index) => {
-                    // text represented after item is selected
-                    // if data array is an array of objects then return selectedItem.property to render after item is selected
-                    return selectedItem
-                }}
-                rowTextForSelection={(item, index) => {
-                    // text represented for each item in dropdown
-                    // if data array is an array of objects then return item.property to represent item in dropdown
-                    return item
-                }}
-            />
+
+            <SelectBox>
+                <SelectBoxTitle>Selecione um horário disponível</SelectBoxTitle>
+                <SelectDropdown
+                    data={horarios}
+                    // defaultValueByIndex={1}
+                    // defaultValue={'Egypt'}
+                    onSelect={(selectedItem, index) => {
+                        console.log(selectedItem, index);
+                    }}
+                    defaultButtonText={'Selecionar horário'}
+                    buttonTextAfterSelection={(selectedItem, index) => {
+                        return selectedItem;
+                    }}
+                    rowTextForSelection={(item, index) => {
+                        return item;
+                    }}
+                    buttonStyle={styles.dropdown1BtnStyle}
+                    buttonTextStyle={styles.dropdown1BtnTxtStyle}
+                    renderDropdownIcon={isOpened => {
+                        return <AntDesign name={isOpened ? 'caretup' : 'caretdown'} color={'#34898F'} size={22} />;
+                    }}
+                    dropdownIconPosition={'right'}
+                    dropdownStyle={styles.dropdown1DropdownStyle}
+                    rowStyle={styles.dropdown1RowStyle}
+                    rowTextStyle={styles.dropdown1RowTxtStyle}
+                />
+            </SelectBox>
         </>
     )
+
 }
+const styles = StyleSheet.create({
+    dropdown1BtnStyle: {
+        width: '100%',
+        height: 55,
+        backgroundColor: '#FFF',
+        borderRadius: 8,
+        borderWidth: 2,
+        borderColor: '#60BFC5',
+        marginTop: 10
+    },
+    dropdown1BtnTxtStyle: { color: '#34898F', textAlign: 'left', fontFamily: 'MontserratAlternates_600SemiBold', fontSize: 14 },
+    dropdown1DropdownStyle: { backgroundColor: '#EFEFEF' },
+    dropdown1RowStyle: { backgroundColor: '#EFEFEF', borderBottomColor: '#60BFC5' },
+    dropdown1RowTxtStyle: { color: '#34898F', textAlign: 'center', fontSize: 20 },
+})

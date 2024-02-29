@@ -30,13 +30,6 @@ export const AgendarConsulta = ({ }) => {
         { id: 3, nomeMedico: "Dr Rodrigo Santos", especialidade: "Clínico, Pediatra" },
         { id: 4, nomeMedico: "Dr Jerfesson", especialidade: "Fisioterapia" }
     ]
-    const horario = [
-        {id: 1, hora:"11:00"},
-        {id: 2, hora:"12:00"},
-        {id: 3, hora:"13:00"},
-        {id: 4, hora:"14:00"},
-        {id: 5, hora:"15:00"}
-    ]
 
     return (
         <Container style={{ justifyContent: "center", alignItems: "center", margin: 0 }}>
