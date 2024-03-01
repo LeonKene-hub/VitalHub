@@ -44,6 +44,7 @@ export const CalendarApp = ({
     return (
         <>
             <Calendar
+                //style={{marginBottom: 10}}
                 onDayPress={day => {
                     setSelected(day.dateString);
                 }}

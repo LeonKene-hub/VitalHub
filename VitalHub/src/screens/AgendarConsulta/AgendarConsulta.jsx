@@ -9,6 +9,7 @@ import { TouchableOpacity } from "react-native"
 import { Body, RenderInside } from "./Style"
 import { useState } from "react"
 import { CalendarApp } from "../../components/CalendarApp/CalendarApp"
+import { ConsultationModal } from "../../components/ConsultationModal/ConsultationModal"
 
 export const AgendarConsulta = ({ }) => {
 
@@ -16,6 +17,8 @@ export const AgendarConsulta = ({ }) => {
 
     const [clinicaSelected, setClinicaSelected] = useState("");
     const [medicoSelected, setMedicoSelected] = useState("");
+
+    const [consulModal, setConsulModal] = useState(false); //mudar para false
 
     const clinicas = [
         { id: 1, nomeClinica: "Clínica Natureh", endereco: "São Paulo, SP", nota: "4,5", dias: "Seg-Sex" },
@@ -32,98 +35,107 @@ export const AgendarConsulta = ({ }) => {
     ]
 
     return (
-        <Container style={{ justifyContent: "center", alignItems: "center", margin: 0 }}>
-            <Body>
+        <>
+            <Container style={{ justifyContent: "center", alignItems: "center", margin: 0 }}>
+                <Body>
+                    <Title style={{ marginTop: 25, marginBottom: 25 }}>Selecionar {status}</Title>
 
-                <Title style={{ marginTop: 35, marginBottom: 35 }}>Selecionar {status}</Title>
+                    <RenderInside>
+                        {status === "clínica" ?
+                            (
+                                <CardList
+                                    data={clinicas}
+                                    keyExtractor={(item) => item.id}
+                                    renderItem={({ item }) =>
+                                        <ClinicCard
+                                            nomeClinica={item.nomeClinica}
+                                            nota={item.nota}
+                                            dias={item.dias}
+                                            local={item.endereco}
+                                            //funções
+                                            actived={clinicaSelected == item.id}
+                                            onPress={() => clinicaSelected == item.id ? setClinicaSelected(item.id) : setClinicaSelected(item.id)}
+                                        />}
+                                />
+                            ) : status === "médico" ? (
+                                <CardList
+                                    data={medicos}
+                                    keyExtractor={(item) => item.id}
+                                    renderItem={({ item }) =>
+                                        <MedCard
+                                            nome={item.nomeMedico}
+                                            especialidade={item.especialidade}
+                                            //funções
+                                            actived={medicoSelected == item.id}
+                                            onPress={() => medicoSelected == item.id ? setMedicoSelected(item.id) : setMedicoSelected(item.id)}
+                                        />}
+                                />
+                            ) : (
+                                <CalendarApp />
 
-                <RenderInside>
-                    {status === "clínica" ?
-                        (
-                            <CardList
-                                data={clinicas}
-                                keyExtractor={(item) => item.id}
-                                renderItem={({ item }) =>
-                                    <ClinicCard
-                                        nomeClinica={item.nomeClinica}
-                                        nota={item.nota}
-                                        dias={item.dias}
-                                        local={item.endereco}
-                                        //funções
-                                        actived={clinicaSelected == item.id}
-                                        onPress={() => clinicaSelected == item.id ? setClinicaSelected(item.id) : setClinicaSelected(item.id)}
-                                    />}
-                            />
-                        ) : status === "médico" ? (
-                            <CardList
-                                data={medicos}
-                                keyExtractor={(item) => item.id}
-                                renderItem={({ item }) =>
-                                    <MedCard
-                                        nome={item.nomeMedico}
-                                        especialidade={item.especialidade}
-                                        //funções
-                                        actived={medicoSelected == item.id}
-                                        onPress={() => medicoSelected == item.id ? setMedicoSelected(item.id) : setMedicoSelected(item.id)}
-                                    />}
-                            />
-                        ) : (
-                            <CalendarApp/>
-                            
-                        )
-                    }
+                            )
+                        }
 
-                    {/* <ClinicCard
+                        {/* <ClinicCard
                         actived={clinicaSelected}
                         onPress={() => clinicaSelected ? setClinicaSelected(false) : setClinicaSelected(true)}
                     /> */}
 
-                    {/* <MedCard
+                        {/* <MedCard
                         actived={medicoSelected}
                         onPress={() => medicoSelected ? setMedicoSelected(false) : setMedicoSelected(true)}
                     /> */}
 
-                </RenderInside>
+                    </RenderInside>
 
-                <NormalButton
-                    title={"Continuar"}
-                    onPress={() => {
-                        switch (status) {
-                            case "":
-                                setStatus("clínica")
-                                break;
-                            case "clínica":
-                                setStatus("médico")
-                                break;
-                            case "médico":
-                                setStatus("data")
-                                break;
-                            default:
-                                setStatus("data")
-                                break;
-                        }
-                    }}
-                />
+                    <NormalButton
+                        title={"Continuar"}
+                        onPress={() => {
+                            switch (status) {
+                                case "":
+                                    setStatus("clínica")
+                                    break;
+                                case "clínica":
+                                    setStatus("médico")
+                                    break;
+                                case "médico":
+                                    setStatus("data")
+                                    break;
+                                case "data":
+                                    setConsulModal(true)
+                                    break;
+                                default:
+                                    setStatus("data")
+                                    break;
+                            }
+                        }}
+                    />
 
-                <TouchableOpacity
-                    style={{ marginBottom: 15 }}
-                    onPress={() => {
-                        switch (status) {
-                            case "data":
-                                setStatus("médico")
-                                break;
-                            case "médico":
-                                setStatus("clínica")
-                                break;
-                            default:
-                                setStatus("clínica")
-                                break;
-                        }
-                    }}
-                >
-                    <LinkMedium>Cancelar</LinkMedium>
-                </TouchableOpacity>
-            </Body>
-        </Container>
+                    <TouchableOpacity
+                        style={{ marginBottom: 15 }}
+                        onPress={() => {
+                            switch (status) {
+                                case "data":
+                                    setStatus("médico")
+                                    break;
+                                case "médico":
+                                    setStatus("clínica")
+                                    break;
+                                default:
+                                    setStatus("clínica")
+                                    break;
+                            }
+                        }}
+                    >
+                        <LinkMedium>Cancelar</LinkMedium>
+                    </TouchableOpacity>
+                </Body>
+            </Container>
+            
+            <ConsultationModal
+                visible={consulModal}
+                onRequestClose={() => setConsulModal(false)}
+            />
+        </>
     )
 }
