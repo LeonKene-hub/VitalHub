@@ -18,7 +18,7 @@ export const InputContent = styled.TextInput.attrs({
     border-radius: 5px;
     padding:10px 10px;
     text-align: justify;
-    color: black;
+    color: #4E4B59;
     font-family: "MontserratAlternates_600SemiBold";
 `
 

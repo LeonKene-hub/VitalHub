@@ -1,4 +1,4 @@
-import { ContentBox, InputContent, Label} from "./Style"
+import { ContentBox, InputContent, Label } from "./Style"
 
 
 export const FormField = ({
@@ -15,9 +15,14 @@ export const FormField = ({
         <ContentBox
             fieldWidth={fieldWidth}
         >
-            <Label>
-                {labelText}
-            </Label>
+            {labelText.length == 0 ? (
+                <>
+                </>
+            ) : (
+                <Label>
+                    {labelText}
+                </Label>
+            )}
 
             <InputContent
                 multiline={true}

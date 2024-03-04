@@ -2,15 +2,18 @@ import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
 //Paginas
-import { Navegacao } from './src/screens/Navegacao/Navegacao';
-import { Login } from './src/screens/Login/Login';
+import { AgendarConsulta } from './src/screens/AgendarConsulta/AgendarConsulta';
 import { RecuperarSenha } from './src/screens/RecuperarSenha/RecuperarSenha';
 import { VerificarEmail } from './src/screens/VerificarEmail/VerificarEmail';
 import { RedefinirSenha } from './src/screens/RedefinirSenha/RedefinirSenha';
-import { CriarConta } from './src/screens/CriarConta/CriarConta';
-import { Perfil } from './src/screens/Perfil/Perfil';
-import { Home_Medico } from './src/screens/Home_Medico/Home';
 import { Prontuario } from './src/screens/Prontuario_Medico/Prontuario'
+import { CriarConta } from './src/screens/CriarConta/CriarConta';
+import { Home_Paciente } from './src/screens/Home_Paciente/Home';
+import { Prescricao } from './src/screens/Prescricao/Prescricao';
+import { Navegacao } from './src/screens/Navegacao/Navegacao';
+import { Home_Medico } from './src/screens/Home_Medico/Home';
+import { Perfil } from './src/screens/Perfil/Perfil';
+import { Login } from './src/screens/Login/Login';
 
 //instancia do StackNavigator
 const Stack = createNativeStackNavigator();
@@ -27,9 +30,6 @@ import {
   MontserratAlternates_600SemiBold,
   MontserratAlternates_500Medium
 } from '@expo-google-fonts/montserrat-alternates';
-import { Home_Paciente } from './src/screens/Home_Paciente/Home';
-import { AgendarConsulta } from './src/screens/AgendarConsulta/AgendarConsulta';
-
 
 export default function App() {
 
@@ -122,6 +122,12 @@ export default function App() {
           name='AgendarConsulta'
           component={AgendarConsulta}
           options={{ title: 'AgendarConsulta' }}
+        />
+
+        <Stack.Screen
+          name='Prescricao'
+          component={Prescricao}
+          options={{title: 'Prescricao'}}
         />
 
       </Stack.Navigator>
