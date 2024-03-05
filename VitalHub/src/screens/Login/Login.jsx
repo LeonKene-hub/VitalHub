@@ -6,7 +6,12 @@ import { Input } from "../../components/Input/Style"
 import { Title } from "../../components/Title/Style"
 import { Logo } from "../../components/Logo/Style"
 
-export const Login = () => {
+export const Login = ( {navigation} ) => {
+
+    async function Login() {
+        navigation.navigate("Main")
+    }
+
     return (
         <Container>
 
@@ -25,7 +30,7 @@ export const Login = () => {
 
             <LinkMedium>Esqueceu sua senha?</LinkMedium>
 
-            <NormalButton title={"Entrar"} fieldWidth={90} />
+            <NormalButton title={"Entrar"} fieldWidth={90} onPress={() => Login()}/>
 
             <GoogleButton title={"Entrar com Google"} fieldWidth={90} />
 

@@ -31,6 +31,8 @@ import {
   MontserratAlternates_500Medium
 } from '@expo-google-fonts/montserrat-alternates';
 import { LocalMap } from './src/screens/LocalMap/LocalMap';
+import { CameraTeste } from './src/screens/CameraTeste/CameraTeste';
+import { Main } from './src/screens/Main/Main';
 
 export default function App() {
 
@@ -57,19 +59,25 @@ export default function App() {
       <Stack.Navigator screenOptions={{ headerShown: false }}>
 
         <Stack.Screen
+          name='Login'
+          component={Login}
+          options={{ title: 'Login' }}
+        />
+
+        <Stack.Screen
+          name='Main'
+          component={Main}
+          options={{ title: 'Main' }}
+        />
+
+        {/* <Stack.Screen
           //nome tela
           name='Navegacao'
           //componente que sera chamado
           component={Navegacao}
           //titulo da tela
           options={{ title: 'Navegacao' }}
-        />
-
-        <Stack.Screen
-          name='Login'
-          component={Login}
-          options={{ title: 'Login' }}
-        />
+        /> */}
 
         <Stack.Screen
           name='RecuperarSenha'
@@ -128,13 +136,19 @@ export default function App() {
         <Stack.Screen
           name='Prescricao'
           component={Prescricao}
-          options={{title: 'Prescricao'}}
+          options={{ title: 'Prescricao' }}
         />
 
         <Stack.Screen
           name='LocalMap'
           component={LocalMap}
-          options={{title: 'LocalMap'}}
+          options={{ title: 'LocalMap' }}
+        />
+
+        <Stack.Screen
+          name='CameraTeste'
+          component={CameraTeste}
+          options={{ title: 'CameraTeste' }}
         />
 
       </Stack.Navigator>
