@@ -59,6 +59,11 @@ export const Navegacao = ({ navigation }) => {
                 title="Prescricao"
                 onPress={() => navigation.navigate('Prescricao')}
             />
+
+            <Button
+                title="LocalMap"
+                onPress={() => navigation.navigate('LocalMap')}
+            />
         </View>
     );
 }

@@ -30,6 +30,7 @@ import {
   MontserratAlternates_600SemiBold,
   MontserratAlternates_500Medium
 } from '@expo-google-fonts/montserrat-alternates';
+import { LocalMap } from './src/screens/LocalMap/LocalMap';
 
 export default function App() {
 
@@ -128,6 +129,12 @@ export default function App() {
           name='Prescricao'
           component={Prescricao}
           options={{title: 'Prescricao'}}
+        />
+
+        <Stack.Screen
+          name='LocalMap'
+          component={LocalMap}
+          options={{title: 'LocalMap'}}
         />
 
       </Stack.Navigator>
