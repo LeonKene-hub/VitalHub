@@ -10,7 +10,8 @@ export const DoctorModal = ({
     doctorName,
     especialidade,
     codigo,
-    visible
+    visible,
+    navigation
 }) => {
     return (
         <BodyModal
@@ -29,6 +30,7 @@ export const DoctorModal = ({
                 <NormalButton 
                     title={"ver local da consulta"}
                     fieldWidth={90}
+                    onPress={() => navigation.navigate('LocalMap')}
                 />
 
                 <TouchableOpacity onPress={onRequestClose} style={{marginBottom: 15}}>

@@ -1,10 +1,12 @@
 import { FormField } from "../../components/FormField/FormField"
 import { Container } from "../../components/Container/Style"
-import {Paragraph} from "../../components/Paragraph/Style"
+import { Paragraph } from "../../components/Paragraph/Style"
 import { Title } from "../../components/Title/Style"
 import { InfoBody, Line, Map } from "./Style"
+import { TouchableOpacity } from "react-native"
+import { LinkMedium } from "../../components/Links/Style"
 
-export const LocalMap = () => {
+export const LocalMap = ({ navigation }) => {
     return (
         <Container>
             <Map />
@@ -12,21 +14,25 @@ export const LocalMap = () => {
                 <Title>Clínica Natureh</Title>
                 <Paragraph>São Paulo, SP</Paragraph>
 
-                <FormField 
+                <FormField
                     labelText="Endereço"
                     fieldWidth={90}
                 />
 
                 <Line>
-                    <FormField 
+                    <FormField
                         labelText="Número"
                         fieldWidth={45}
                     />
-                    <FormField 
+                    <FormField
                         labelText="Bairro"
                         fieldWidth={45}
                     />
                 </Line>
+
+                <TouchableOpacity style={{ marginBottom: 15, marginTop: 15 }} onPress={() => navigation.replace('Home_Paciente')}>
+                    <LinkMedium>Cancelar</LinkMedium>
+                </TouchableOpacity>
             </InfoBody>
         </Container>
     )

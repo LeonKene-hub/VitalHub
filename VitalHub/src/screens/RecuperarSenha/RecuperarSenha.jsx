@@ -8,7 +8,7 @@ import { Logo } from "../../components/Logo/Style"
 import { AntDesign } from '@expo/vector-icons';
 
 
-export const RecuperarSenha = () => {
+export const RecuperarSenha = ({ navigation }) => {
     return (
         <Container >
             <ContainerLogo>
@@ -27,7 +27,7 @@ export const RecuperarSenha = () => {
                 placeholder={'Usuário ou Email'}
             />
 
-            <NormalButton title={"Continuar"} fieldWidth={90} />
+            <NormalButton title={"Continuar"} fieldWidth={90} onPress={() => navigation.navigate('VerificarEmail')}/>
         </Container>
     )
 }

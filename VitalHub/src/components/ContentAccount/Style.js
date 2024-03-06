@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const ContentAccount = styled.View`
+export const ContentAccount = styled.TouchableOpacity`
     width: 90%;
     height: 20px;
     align-items: center;

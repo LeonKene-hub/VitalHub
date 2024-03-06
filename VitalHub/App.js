@@ -88,7 +88,7 @@ export default function App() {
         <Stack.Screen
           name='VerificarEmail'
           component={VerificarEmail}
-          options={{ title: 'VerificarSenha' }}
+          options={{ title: 'VerificarEmail' }}
         />
 
         <Stack.Screen

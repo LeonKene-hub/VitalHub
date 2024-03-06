@@ -8,7 +8,7 @@ import { Logo } from "../../components/Logo/Style"
 import { AntDesign } from '@expo/vector-icons';
 
 
-export const RedefinirSenha = () => {
+export const RedefinirSenha = ({navigation}) => {
     return (
         <Container>
             <ContainerLogo>
@@ -26,7 +26,7 @@ export const RedefinirSenha = () => {
             <Input placeholder="Nova Senha" />
             <Input placeholder="Confirmar nova senha" />
 
-            <NormalButton title={"Confirme a sua senha"} fieldWidth={90} />
+            <NormalButton title={"Confirme a sua senha"} fieldWidth={90} onPress={() => navigation.navigate('Login')}/>
 
         </Container>
     )

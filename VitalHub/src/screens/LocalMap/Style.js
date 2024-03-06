@@ -4,7 +4,7 @@ import { OptionLine } from "../Prescricao/Style";
 
 export const Map = styled(MapView)`
     width: 100%;
-    height: 55%;
+    height: 50%;
 `
 
 export const InfoBody = styled.View`

@@ -9,7 +9,7 @@ import { Logo } from "../../components/Logo/Style"
 import { AntDesign } from '@expo/vector-icons';
 
 
-export const VerificarEmail = () => {
+export const VerificarEmail = ({navigation}) => {
     return (
         <Container>
             <ContainerLogo>
@@ -31,7 +31,7 @@ export const VerificarEmail = () => {
                 <CheckCode placeholder='0' keyboardType="numeric" maxLength={1} />
             </CheckCodeBox>
 
-            <NormalButton title={"Verificar"} fieldWidth={90} />
+            <NormalButton title={"Verificar"} fieldWidth={90}  onPress={() => navigation.navigate('RedefinirSenha')}/>
 
             <ContentAccount>
                 <TextAccountLink>Reenviar Codigo</TextAccountLink>

@@ -6,7 +6,7 @@ import { Title } from "../../components/Title/Style"
 import { Input } from "../../components/Input/Style"
 import { Logo } from "../../components/Logo/Style"
 
-export const CriarConta = () => {
+export const CriarConta = ({ navigation }) => {
     return (
         <Container>
             <Logo source={require("../../assets/VitalHub_Logo1.png")} />
@@ -19,10 +19,10 @@ export const CriarConta = () => {
             <Input placeholder="Senha" />
             <Input placeholder="Confirmar Senha" />
 
-            <NormalButton title={"Cadastrar"} fieldWidth={90} />
+            <NormalButton title={"Cadastrar"} fieldWidth={90} onPress={() => navigation.navigate('Login')}/>
 
-            <ContentAccount>
-                <TextAccountLink>Reenviar Código</TextAccountLink>
+            <ContentAccount onPress={() => navigation.navigate('Login')}>
+                <TextAccountLink>Cancelar</TextAccountLink>
             </ContentAccount>
         </Container>
     )

@@ -4,14 +4,14 @@ import { PromptuaryModal } from "../../components/PromptuaryModal/PromptuaryModa
 import { NewConsulModal } from "../../components/NewConsulModal/NewConsulModal"
 import { OptionButtons } from "../../components/OptionButtons/OptionButtons"
 import { CalendarHome } from "../../components/CalendarHome/CalendarHome"
+import { DoctorModal } from "../../components/DoctorModal/DoctorModal"
 import { Container } from "../../components/Container/Style"
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { CardList, ContainerBox, NewConsul } from "./Style"
 import { Header } from "../../components/Header/Header"
 import { useState } from "react"
-import { DoctorModal } from "../../components/DoctorModal/DoctorModal"
 
-export const Home_Paciente = () => {
+export const Home_Paciente = ({ navigation }) => {
     const [statusLista, setStatusLista] = useState("pendente");
 
     const [modalCancel, setModalCancel] = useState(false);
@@ -98,7 +98,7 @@ export const Home_Paciente = () => {
                                     nome={item.Nome}
                                     situacao={item.Situacao}
                                     onPressCancel={() => setModalCancel(true)}
-                                    onPressCard={() => {setModalDoctor(true); setIdEncontrado(item);}}
+                                    onPressCard={() => { setModalDoctor(true); setIdEncontrado(item); }}
                                 /> : <></>}
                         />
 
@@ -120,10 +120,10 @@ export const Home_Paciente = () => {
                         <CardList
                             data={dados}
                             keyExtractor={(item) => item.id}
-                            renderItem={({ item }) => item.Situacao === "cancelado" ? 
-                                <ConsultationData 
-                                    nome={item.Nome} 
-                                    situacao={item.Situacao} 
+                            renderItem={({ item }) => item.Situacao === "cancelado" ?
+                                <ConsultationData
+                                    nome={item.Nome}
+                                    situacao={item.Situacao}
                                 /> : <></>}
                         />
                     )
@@ -145,6 +145,7 @@ export const Home_Paciente = () => {
             <PromptuaryModal
                 visible={modalPromptuary}
                 onRequestClose={() => { setModalPromptuary(false) }}
+                navigation={navigation}
 
                 name={idEncontrado.Nome}
                 age={idEncontrado.Idade}
@@ -158,6 +159,7 @@ export const Home_Paciente = () => {
                 visible={modalDoctor}
                 onRequestClose={() => setModalDoctor(false)}
                 doctorName={idEncontrado.Nome}
+                navigation={navigation}
             />
         </>
     )

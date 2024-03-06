@@ -9,9 +9,12 @@ import { TouchableOpacity, View } from "react-native"
 import { Title } from "../../components/Title/Style"
 import { useState } from "react"
 
-export const Prontuario = () => {
+export const Prontuario = ({ navigation }) => {
 
-    const [formEdit, setFormEdit] = useState(false);
+    const [formEdit, setFormEdit] = useState(true);
+    const [descricao, setDescricao] = useState("");
+    const [diagnostico, setDiagnostico] = useState("");
+    const [prescricao, setPrescricao] = useState("");
 
 
     return (
@@ -23,9 +26,30 @@ export const Prontuario = () => {
                     <Title>Nome do paciente</Title>
                     <Paragraph>paciente@gmail.com</Paragraph>
 
-                    <FormField fieldWidth={90} editable={formEdit} placeholder={"Descrição"} labelText="Descrição da consulta" />
-                    <FormField fieldWidth={90} editable={formEdit} placeholder={"Diagnóstico"} labelText="Diagnóstico do pacienteF" />
-                    <FormField fieldWidth={90} editable={formEdit} placeholder={"Prescrição medica"} labelText="Prescrição médica" />
+                    <FormField
+                        fieldWidth={90}
+                        editable={formEdit}
+                        placeholder={"Descrição"}
+                        labelText="Descrição da consulta"
+                        fieldValue={descricao}
+                        onChangeText={(newValue) => { setDescricao(newValue) }}
+                    />
+                    <FormField
+                        fieldWidth={90}
+                        editable={formEdit}
+                        placeholder={"Diagnóstico"}
+                        labelText="Diagnóstico do pacienteF"
+                        fieldValue={diagnostico}
+                        onChangeText={(newValue) => { setDiagnostico(newValue) }}
+                    />
+                    <FormField
+                        fieldWidth={90}
+                        editable={formEdit}
+                        placeholder={"Prescrição medica"}
+                        labelText="Prescrição médica"
+                        fieldValue={prescricao}
+                        onChangeText={(newValue) => { setPrescricao(newValue) }}
+                    />
 
                     {formEdit == false ? (
                         <NormalButton title={"editar"} onPress={() => { setFormEdit(true) }} fieldWidth={90} />
@@ -33,7 +57,7 @@ export const Prontuario = () => {
                         <NormalButton title={"Salvar"} onPress={() => { setFormEdit(false) }} fieldWidth={90} />
                     )}
 
-                    <TouchableOpacity>
+                    <TouchableOpacity onPress={() => navigation.replace('Home_Paciente')}>
                         <LinkMedium>Cancelar</LinkMedium>
                     </TouchableOpacity>
                 </View>

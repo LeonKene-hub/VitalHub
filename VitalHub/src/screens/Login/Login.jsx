@@ -5,11 +5,20 @@ import { LinkMedium } from "../../components/Links/Style"
 import { Input } from "../../components/Input/Style"
 import { Title } from "../../components/Title/Style"
 import { Logo } from "../../components/Logo/Style"
+import { useState } from "react"
+import { TouchableOpacity } from "react-native"
 
-export const Login = ( {navigation} ) => {
+export const Login = ({ navigation }) => {
+
+    const [email, setEmail] = useState('marchetti@gmail.com')
+    const [senha, setSenha] = useState('0002225')
 
     async function Login() {
-        navigation.navigate("Main")
+        if (email === 'marchetti@gmail.com' && senha === '0002225') {
+            navigation.replace("Main")
+        } else {
+            console.log("senha ou email errado")
+        }
     }
 
     return (
@@ -21,20 +30,26 @@ export const Login = ( {navigation} ) => {
 
             <Input
                 placeholder="Usuário ou Email"
+                value={email}
+                onChangeText={(newValue) => { setEmail(newValue) }}
             />
 
             <Input
                 placeholder="Senha"
                 secureTextEntry
+                value={senha}
+                onChangeText={(newValue) => { setSenha(newValue) }}
             />
 
-            <LinkMedium>Esqueceu sua senha?</LinkMedium>
+            <TouchableOpacity style={{ width: "100%"}} onPress={() => navigation.navigate('RecuperarSenha')}>
+                <LinkMedium>Esqueceu sua senha?</LinkMedium>
+            </TouchableOpacity>
 
-            <NormalButton title={"Entrar"} fieldWidth={90} onPress={() => Login()}/>
+            <NormalButton title={"Entrar"} fieldWidth={90} onPress={() => Login()} />
 
             <GoogleButton title={"Entrar com Google"} fieldWidth={90} />
 
-            <ContentAccount>
+            <ContentAccount onPress={() => navigation.navigate('CriarConta')}>
                 <TextAccount>Nao tem conta? <TextAccountLink>Crie uma conta agora!</TextAccountLink></TextAccount>
             </ContentAccount>
 
