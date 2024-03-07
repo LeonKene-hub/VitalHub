@@ -1,5 +1,5 @@
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
-import { Home_Paciente } from '../Home_Paciente/Home'
+import { Home } from '../Home/Home'
 import { Perfil } from '../Perfil/Perfil'
 import { FontAwesome, FontAwesome5 } from '@expo/vector-icons';
 import { ContentIcon, TextIcon } from './Style';
@@ -11,7 +11,7 @@ const BottomTab = createBottomTabNavigator();
 export const Main = () => {
     return (
         <BottomTab.Navigator
-            initialRouteName='Home_Paciente'
+            initialRouteName='Home'
 
             screenOptions={({ route }) => ({
                 tabBarStyle: { backgroundColor: "#FFFFFF", height: 70, paddingTop: 10 },
@@ -20,7 +20,7 @@ export const Main = () => {
                 headerShown: false,
 
                 tabBarIcon: ({ focused }) => {
-                    if ( route.name === "Home_Paciente" ) {
+                    if ( route.name === "Home" ) {
                         return(
                             <ContentIcon
                                 tabBarActiveBackgroundColor={ focused ? "#ECF2FF" : "transparent"}
@@ -44,8 +44,8 @@ export const Main = () => {
         >
 
             <BottomTab.Screen
-                name="Home_Paciente"
-                component={Home_Paciente}
+                name="Home"
+                component={Home}
             />
 
 

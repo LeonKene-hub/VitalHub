@@ -30,8 +30,8 @@ export const LocalMap = ({ navigation }) => {
                     />
                 </Line>
 
-                <TouchableOpacity style={{ marginBottom: 15, marginTop: 15 }} onPress={() => navigation.replace('Home_Paciente')}>
-                    <LinkMedium>Cancelar</LinkMedium>
+                <TouchableOpacity style={{ marginBottom: 15, marginTop: 15 }} onPress={() => navigation.replace('Main')}>
+                    <LinkMedium>Voltar</LinkMedium>
                 </TouchableOpacity>
             </InfoBody>
         </Container>

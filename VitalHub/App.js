@@ -8,10 +8,9 @@ import { VerificarEmail } from './src/screens/VerificarEmail/VerificarEmail';
 import { RedefinirSenha } from './src/screens/RedefinirSenha/RedefinirSenha';
 import { Prontuario } from './src/screens/Prontuario_Medico/Prontuario'
 import { CriarConta } from './src/screens/CriarConta/CriarConta';
-import { Home_Paciente } from './src/screens/Home_Paciente/Home';
+import { Home } from './src/screens/Home/Home';
 import { Prescricao } from './src/screens/Prescricao/Prescricao';
 import { Navegacao } from './src/screens/Navegacao/Navegacao';
-import { Home_Medico } from './src/screens/Home_Medico/Home';
 import { Perfil } from './src/screens/Perfil/Perfil';
 import { Login } from './src/screens/Login/Login';
 
@@ -109,16 +108,16 @@ export default function App() {
           options={{ title: 'Perfil' }}
         />
 
-        <Stack.Screen
+        {/* <Stack.Screen
           name='Home_Medico'
           component={Home_Medico}
           options={{ title: 'Home_Medico' }}
-        />
+        /> */}
 
         <Stack.Screen
-          name='Home_Paciente'
-          component={Home_Paciente}
-          options={{ title: 'Home_Paciente' }}
+          name='Home'
+          component={Home}
+          options={{ title: 'Home' }}
         />
 
         <Stack.Screen

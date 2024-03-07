@@ -1,6 +1,6 @@
 import { FormField } from "../../components/FormField/FormField"
 import { ScrollForm } from "../../components/ScrollForm/Style"
-import { NormalButton } from "../../components/Button/Buttons"
+import { GoogleButton, NormalButton } from "../../components/Button/Buttons"
 import { Container } from "../../components/Container/Style"
 import { Paragraph } from "../../components/Paragraph/Style"
 import { ProfilePic } from "../../components/Profile/Style"
@@ -8,7 +8,7 @@ import { Title } from "../../components/Title/Style"
 import { View } from "react-native"
 import { useState } from "react"
 
-export const Perfil = () => {
+export const Perfil = ({ navigation }) => {
 
     const [formEdit, setFormEdit] = useState(false);
 
@@ -33,6 +33,7 @@ export const Perfil = () => {
 
                     <NormalButton title={"Salvar"} onPress={() => { setFormEdit(false) }} fieldWidth={90} />
                     <NormalButton title={"editar"} onPress={() => { setFormEdit(true) }} fieldWidth={90} />
+                    <GoogleButton title={"Voltar"} onPress={() => navigation.replace("Main")} fieldWidth={80} />
 
                 </View>
             </ScrollForm>

@@ -4,14 +4,14 @@ import { Container } from "../../components/Container/Style"
 import { MedCard } from "../../components/MedCard/MedCard"
 import { LinkMedium } from "../../components/Links/Style"
 import { Title } from "../../components/Title/Style"
-import { CardList } from "../Home_Paciente/Style"
+import { CardList } from "../Home/Style"
 import { TouchableOpacity } from "react-native"
 import { Body, RenderInside } from "./Style"
 import { useState } from "react"
 import { CalendarApp } from "../../components/CalendarApp/CalendarApp"
 import { ConsultationModal } from "../../components/ConsultationModal/ConsultationModal"
 
-export const AgendarConsulta = ({ }) => {
+export const AgendarConsulta = ({ navigation }) => {
 
     const [status, setStatus] = useState("clínica");
 
@@ -121,6 +121,9 @@ export const AgendarConsulta = ({ }) => {
                                 case "médico":
                                     setStatus("clínica")
                                     break;
+                                case "clínica":
+                                    {navigation.replace('Home')}
+                                    break;
                                 default:
                                     setStatus("clínica")
                                     break;
@@ -135,6 +138,7 @@ export const AgendarConsulta = ({ }) => {
             <ConsultationModal
                 visible={consulModal}
                 onRequestClose={() => setConsulModal(false)}
+                navigation={navigation}
             />
         </>
     )

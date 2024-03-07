@@ -16,6 +16,7 @@ export const DoctorModal = ({
     return (
         <BodyModal
             isVisible={visible}
+            animationOutTiming={0}
         >
             <Center>
                 <DocImg source={{ uri: "https://github.com/LeonKene-hub.png" }} />

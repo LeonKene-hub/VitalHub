@@ -57,7 +57,7 @@ export const Prontuario = ({ navigation }) => {
                         <NormalButton title={"Salvar"} onPress={() => { setFormEdit(false) }} fieldWidth={90} />
                     )}
 
-                    <TouchableOpacity onPress={() => navigation.replace('Home_Paciente')}>
+                    <TouchableOpacity onPress={() => navigation.replace('Home')}>
                         <LinkMedium>Cancelar</LinkMedium>
                     </TouchableOpacity>
                 </View>

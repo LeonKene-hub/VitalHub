@@ -23,7 +23,7 @@ export const Line = styled.View`
     padding-top: 35px;
 `
 
-export const BoxUser = styled.View`
+export const BoxUser = styled.TouchableOpacity`
     width: 70%;
     height: 60px;
     flex-direction: row;

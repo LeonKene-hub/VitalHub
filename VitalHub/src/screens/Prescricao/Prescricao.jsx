@@ -9,9 +9,11 @@ import { Title } from "../../components/Title/Style"
 import { Label } from "../../components/FormField/Style"
 import { Line } from "../../components/DoctorModal/Style"
 import { Text } from "react-native"
+import { TouchableOpacity } from "react-native"
+import { LinkMedium } from "../../components/Links/Style"
 
 
-export const Prescricao = () => {
+export const Prescricao = ({ navigation }) => {
     return (
         <Container>
             <ScrollForm>
@@ -49,7 +51,11 @@ export const Prescricao = () => {
 
                     <DecorLine></DecorLine>
 
-                    <FormField fieldWidth={90} labelText="" fieldValue={"Resultado do exame de sangue : tudo normal"}/>
+                    <FormField fieldWidth={90} labelText="" fieldValue={"Resultado do exame de sangue : tudo normal"} />
+
+                    <TouchableOpacity style={{ marginBottom: 15, marginTop: 15 }} onPress={() => navigation.replace('Main')}>
+                        <LinkMedium>Voltar</LinkMedium>
+                    </TouchableOpacity>
                 </Container>
             </ScrollForm>
         </Container>

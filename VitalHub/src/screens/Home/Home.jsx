@@ -1,52 +1,60 @@
 import { CancellationModal } from "../../components/CancellationModal/CancellationModal"
 import { ConsultationData } from "../../components/ConsultationData/ConsultationData"
 import { PromptuaryModal } from "../../components/PromptuaryModal/PromptuaryModal"
+import { NewConsulModal } from "../../components/NewConsulModal/NewConsulModal"
 import { OptionButtons } from "../../components/OptionButtons/OptionButtons"
 import { CalendarHome } from "../../components/CalendarHome/CalendarHome"
+import { DoctorModal } from "../../components/DoctorModal/DoctorModal"
 import { Container } from "../../components/Container/Style"
+import { MaterialCommunityIcons } from '@expo/vector-icons';
+import { CardList, ContainerBox, NewConsul } from "./Style"
 import { Header } from "../../components/Header/Header"
-import { CardList, ContainerBox } from "./Style"
 import { useState } from "react"
 
-export const Home_Medico = () => {
+export const Home = ({ navigation }) => {
     const [statusLista, setStatusLista] = useState("pendente");
+    const [profile, setProfile] = useState('Medico')
+
     const [modalCancel, setModalCancel] = useState(false);
+    const [modalNewConsul, setModalNewConsul] = useState(false);
+    const [modalDoctor, setModalDoctor] = useState(false);
     const [modalPromptuary, setModalPromptuary] = useState(false);
+
     const [idEncontrado, setIdEncontrado] = useState("");
 
     const dados = [
         {
             id: 1,
-            Nome: "1",
-            Idade: 20,
+            Nome: "Dr.1",
+            Idade: 35,
             Email: "teste1@senai.com",
             Situacao: "pendente"
         },
         {
             id: 2,
-            Nome: "2",
-            Idade: 14,
+            Nome: "Dr.2",
+            Idade: 44,
             Email: "student@hotmail.com",
             Situacao: "realizado"
         },
         {
             id: 3,
-            Nome: "3",
+            Nome: "Dr.3",
             Idade: 37,
             Email: "master3@gmal.com",
             Situacao: "pendente"
         },
         {
             id: 4,
-            Nome: "4",
-            Idade: 18,
+            Nome: "Dr.4",
+            Idade: 28,
             Email: "student@hotmail.com",
             Situacao: "cancelado"
         },
         {
             id: 5,
-            Nome: "5",
-            Idade: 5,
+            Nome: "Dr.5",
+            Idade: 55,
             Email: "student@hotmail.com",
             Situacao: "realizado"
         },
@@ -55,7 +63,9 @@ export const Home_Medico = () => {
     return (
         <>
             <Container>
-                <Header />
+                <Header
+                    navigation={navigation}
+                />
 
                 <CalendarHome />
 
@@ -85,7 +95,13 @@ export const Home_Medico = () => {
                         <CardList
                             data={dados}
                             keyExtractor={(item) => item.id}
-                            renderItem={({ item }) => item.Situacao === "pendente" ? <ConsultationData nome={item.Nome} situacao={item.Situacao} onPressCancel={() => setModalCancel(true)} /> : <></>}
+                            renderItem={({ item }) => item.Situacao === "pendente" ?
+                                <ConsultationData
+                                    nome={item.Nome}
+                                    situacao={item.Situacao}
+                                    onPressCancel={() => setModalCancel(true)}
+                                    onPressCard={() => { setModalDoctor(true); setIdEncontrado(item); }}
+                                /> : <></>}
                         />
 
                     ) : statusLista == "realizado" ? (
@@ -93,10 +109,19 @@ export const Home_Medico = () => {
                         <CardList
                             data={dados}
                             keyExtractor={(item) => item.id}
-                            renderItem={({ item }) => item.Situacao === "realizado" ? <ConsultationData nome={item.Nome} situacao={item.Situacao} onPressAppoiment={() => {
-                                setModalPromptuary(true);
-                                setIdEncontrado(item);
-                            }} /> : <></>}
+                            renderItem={({ item }) => item.Situacao === "realizado" ?
+                                <ConsultationData
+                                    nome={item.Nome}
+                                    situacao={item.Situacao}
+                                    onPressAppoiment={() => {
+                                        profile === "Paciente" ? (
+                                            navigation.navigate('Prescricao')
+                                        ) : (
+                                            setModalPromptuary(true), setIdEncontrado(item)
+                                        )
+                                    }}
+
+                                /> : <></>}
                         />
 
                     ) : (
@@ -104,12 +129,28 @@ export const Home_Medico = () => {
                         <CardList
                             data={dados}
                             keyExtractor={(item) => item.id}
-                            renderItem={({ item }) => item.Situacao === "cancelado" ? <ConsultationData nome={item.Nome} situacao={item.Situacao} /> : <></>}
+                            renderItem={({ item }) => item.Situacao === "cancelado" ?
+                                <ConsultationData
+                                    nome={item.Nome}
+                                    situacao={item.Situacao}
+                                /> : <></>}
                         />
                     )
                 }
 
+                {/* adicionar consulta */}
+
+                {profile === "Paciente" ? (
+                    <NewConsul onPress={() => setModalNewConsul(true)}>
+                        <MaterialCommunityIcons name="stethoscope" size={32} color="#FBFBFB" />
+                    </NewConsul>
+                ) : (
+                    <></>
+                )}
+
+
             </Container>
+
             <CancellationModal
                 visible={modalCancel}
                 onRequestClose={() => { setModalCancel(false) }}
@@ -118,9 +159,21 @@ export const Home_Medico = () => {
                 title={"Cancelar consulta"}
                 paragraph={"Ao cancelar essa consulta, abrirá uma possível disponibilidade no seu horário, deseja mesmo cancelar essa consulta?"}
             />
+            <DoctorModal
+                visible={modalDoctor}
+                onRequestClose={() => setModalDoctor(false)}
+                doctorName={idEncontrado.Nome}
+                navigation={navigation}
+            />
+            <NewConsulModal
+                visible={modalNewConsul}
+                onRequestClose={() => { setModalNewConsul(false) }}
+                navigation={navigation}
+            />
             <PromptuaryModal
                 visible={modalPromptuary}
                 onRequestClose={() => { setModalPromptuary(false) }}
+                navigation={navigation}
 
                 name={idEncontrado.Nome}
                 age={idEncontrado.Idade}

@@ -2,11 +2,13 @@ import { TouchableOpacity } from "react-native";
 import { BoxUser, DataUser, ImageUser, Line, LinearContainer, UserName, Wellcome } from "./Style"
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-export const Header = () => {
+export const Header = ({ navigation }) => {
     return (
         <LinearContainer>
             <Line>
-                <BoxUser>
+                <BoxUser
+                    onPress={() => navigation.navigate('Perfil')}
+                >
                     <ImageUser source={{ uri: "https://github.com/LeonKene-hub.png" }} />
 
                     <DataUser>

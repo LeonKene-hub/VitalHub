@@ -7,11 +7,13 @@ import { Paragraph } from "../Paragraph/Style"
 
 export const ConsultationModal = ({
     onRequestClose,
-    visible
+    visible,
+    navigation
 }) => {
     return (
         <ModalForm
             isVisible={visible}
+            animationOutTiming={0}
         >
             <ModalHeader>
                 <Title style={{fontSize: 20}}>Agendar consulta</Title>
@@ -41,6 +43,7 @@ export const ConsultationModal = ({
             <NormalButton
                 title={"Confirmar"}
                 fieldWidth={80}
+                onPress={() => navigation.replace("Main")}
             />
             <TouchableOpacity onPress={onRequestClose} style={{ marginBottom: 25 }}>
                 <LinkMedium>Cancelar</LinkMedium>
