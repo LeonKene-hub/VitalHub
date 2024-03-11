@@ -1,6 +1,6 @@
 import MapView from "react-native-maps";
 import styled from "styled-components";
-import { OptionLine } from "../Prescricao/Style";
+
 
 export const Map = styled(MapView)`
     width: 100%;
