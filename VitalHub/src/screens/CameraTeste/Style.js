@@ -1,17 +1,28 @@
+import { Camera } from "expo-camera";
 import styled from "styled-components";
 
 export const ButtonContainer = styled.View`
+    position: fixed;
     background-color: transparent;
-    flex: 0.2;
+    //border: 1px solid red;
     flex-direction: row;
-    background-color: black;
-    margin: 64px;
+    align-items: center;
+    justify-content: center;
+    gap: 35px;
+    width: 100%;
+    align-self: center;
+    border-radius: 50px;
+    bottom: 45px;
 `
 
 export const ButtonCamera = styled.TouchableOpacity `
-    align-self: flex-end;
-    align-items: center;
-    background-color: white;
+    border: 1px solid white;
     width: 50px;
     height: 50px;
+    border-radius: 50px;
+`
+
+export const CameraBody = styled(Camera)`
+    flex: 1;
+    justify-content: flex-end;
 `

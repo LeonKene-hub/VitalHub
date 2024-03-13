@@ -1,12 +1,17 @@
-import { Camera, CameraType } from 'expo-camera';
-import { useState } from 'react';
-import { Container } from '../../components/Container/Style';
-import { ButtonCamera, ButtonContainer } from './Style';
+import { Camera, CameraType, CameraPictureOptions } from 'expo-camera';
+
+import { useRef, useState } from 'react';
+
+import { ButtonCamera, ButtonContainer, CameraBody } from './Style';
 import { View } from 'react-native';
+import { PhotoTaked } from '../../components/Photo/Photo';
 
 export const CameraTeste = () => {
     const [type, setType] = useState(CameraType.back);
+    const [capturedPhoto, setCapturedPhoto] = useState(null);
+    const camRef = useRef(null)
     const [permission, requestPermission] = Camera.useCameraPermissions();
+    const [modalPhoto, setModalPhoto] = useState(false)
 
     if (!permission) {
         //Camera permissions are still loading
@@ -26,14 +31,31 @@ export const CameraTeste = () => {
     function toggleCameraType() {
         setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
     }
+    async function takePicture() {
+        if (camRef) {
+            const data = await camRef.current.takePictureAsync();
+            setCapturedPhoto(data.uri)
+            setModalPhoto(true)
+        }
+    }
     return (
+        <>
+            <CameraBody type={type} ref={camRef} ratio='16:9'>
 
-        <Camera type={type} style={{flex: 0.8}}>
-            <ButtonContainer>
-                <ButtonCamera onPress={toggleCameraType}></ButtonCamera>
-            </ButtonContainer>
-        </Camera>
+                <ButtonContainer>
+                    <ButtonCamera onPress={toggleCameraType}></ButtonCamera>
+                    <ButtonCamera onPress={takePicture}></ButtonCamera>
+                    <ButtonCamera onPress={toggleCameraType}></ButtonCamera>
+                </ButtonContainer>
+            </CameraBody>
 
+            <PhotoTaked
+                uriPhoto={capturedPhoto}
+                visible={modalPhoto}
+                onRequestClose={() => setModalPhoto(false)}
+            />
+
+        </>
     )
 }
 

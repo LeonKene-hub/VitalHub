@@ -39,7 +39,7 @@ export const Prescricao = ({ navigation }) => {
                     </FormPhoto>
 
                     <OptionLine>
-                        <PhotoButton>
+                        <PhotoButton onPress={() => navigation.navigate('CameraTeste')}>
                             <MaterialCommunityIcons name="camera-plus-outline" size={24} color="white" />
                             <TextButton>Enviar</TextButton>
                         </PhotoButton>

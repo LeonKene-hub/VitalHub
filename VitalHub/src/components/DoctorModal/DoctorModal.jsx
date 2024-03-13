@@ -20,6 +20,7 @@ export const DoctorModal = ({
         >
             <Center>
                 <DocImg source={{ uri: "https://github.com/LeonKene-hub.png" }} />
+                
 
                 <Title style={{marginTop: 15}}>{doctorName}</Title>
 

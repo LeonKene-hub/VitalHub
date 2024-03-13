@@ -13,7 +13,7 @@ import { useState } from "react"
 
 export const Home = ({ navigation }) => {
     const [statusLista, setStatusLista] = useState("pendente");
-    const [profile, setProfile] = useState('Medico')
+    const [profile, setProfile] = useState('Paciente')
 
     const [modalCancel, setModalCancel] = useState(false);
     const [modalNewConsul, setModalNewConsul] = useState(false);
