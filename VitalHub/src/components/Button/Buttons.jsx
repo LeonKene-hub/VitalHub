@@ -1,3 +1,4 @@
+import { TouchableHighlight } from "react-native"
 import { Button, ButtonTitle, ButtonGoogle, ButtonGoogleTitle } from "./Style"
 // import { AntDesign } from '@expo/vector-icons';
 

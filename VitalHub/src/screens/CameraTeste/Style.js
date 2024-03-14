@@ -15,11 +15,13 @@ export const ButtonContainer = styled.View`
     bottom: 45px;
 `
 
-export const ButtonCamera = styled.TouchableOpacity `
+export const ButtonCamera = styled.TouchableHighlight `
     border: 1px solid white;
     width: 50px;
     height: 50px;
     border-radius: 50px;
+    align-items: center;
+    justify-content: center;
 `
 
 export const CameraBody = styled(Camera)`

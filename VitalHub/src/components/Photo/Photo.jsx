@@ -1,10 +1,11 @@
-import { CloseButton, ModalPhoto, PhotoFile } from "./Style"
+import { CloseButton, Line, ModalPhoto, PhotoFile, SaveButton } from "./Style"
 
 
 export const PhotoTaked = ({
     uriPhoto = "",
     visible = false,
-    onRequestClose
+    onRequestClose,
+    RequestSave
 }) => {
     return(
         <ModalPhoto
@@ -14,7 +15,12 @@ export const PhotoTaked = ({
             {/* source={{ uri: "https://i.imgflip.com/35bdwf.jpg?a475080" }} */}
             {/* source={{ uri: `${uriPhoto}` }} */}
 
+            <Line>
             <CloseButton onPress={onRequestClose}></CloseButton>
+
+            <SaveButton onPress={RequestSave}></SaveButton>
+            </Line>
+
         </ModalPhoto>
     )
 }

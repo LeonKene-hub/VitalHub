@@ -1,6 +1,8 @@
 import { Camera, CameraType, CameraPictureOptions } from 'expo-camera';
-
-import { useRef, useState } from 'react';
+import { FontAwesome } from '@expo/vector-icons';
+import * as Permissions from 'expo-permissions'
+import * as MediaLibrary from 'expo-media-library'
+import { useEffect, useRef, useState } from 'react';
 
 import { ButtonCamera, ButtonContainer, CameraBody } from './Style';
 import { View } from 'react-native';
@@ -12,6 +14,18 @@ export const CameraTeste = () => {
     const camRef = useRef(null)
     const [permission, requestPermission] = Camera.useCameraPermissions();
     const [modalPhoto, setModalPhoto] = useState(false)
+    /*
+        
+    */
+
+    useEffect(() => {
+        (async () => {
+            const { status } = await Camera.requestCameraPermissionsAsync();
+
+            const { status : mediaStatus } = await MediaLibrary.requestPermissionsAsync();
+            requestPermission(status === 'granted')
+        })();
+    }, []);
 
     if (!permission) {
         //Camera permissions are still loading
@@ -31,6 +45,7 @@ export const CameraTeste = () => {
     function toggleCameraType() {
         setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
     }
+
     async function takePicture() {
         if (camRef) {
             const data = await camRef.current.takePictureAsync();
@@ -38,18 +53,38 @@ export const CameraTeste = () => {
             setModalPhoto(true)
         }
     }
+    async function savePicture() {
+        const asset = await MediaLibrary.createAssetAsync(capturedPhoto)
+        .then(() => {
+            alert('foto tirada')
+        })
+        .catch(error => {
+            console.log("error", error)
+        })
+    }
+
+
     return (
         <>
             <CameraBody type={type} ref={camRef} ratio='16:9'>
 
                 <ButtonContainer>
-                    <ButtonCamera onPress={toggleCameraType}></ButtonCamera>
-                    <ButtonCamera onPress={takePicture}></ButtonCamera>
-                    <ButtonCamera onPress={toggleCameraType}></ButtonCamera>
+                    <ButtonCamera onPress={toggleCameraType}>
+                        <FontAwesome name="refresh" size={23} color="white" />
+                    </ButtonCamera>
+
+                    <ButtonCamera onPress={takePicture}>
+                        <FontAwesome name='camera' size={23} color="white" />
+                    </ButtonCamera>
+
+                    <ButtonCamera>
+                        <FontAwesome name="photo" size={23} color="white" />
+                    </ButtonCamera>
                 </ButtonContainer>
             </CameraBody>
 
             <PhotoTaked
+                RequestSave={savePicture}
                 uriPhoto={capturedPhoto}
                 visible={modalPhoto}
                 onRequestClose={() => setModalPhoto(false)}
@@ -63,7 +98,7 @@ export const CameraTeste = () => {
 // import { useState } from 'react';
 // import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
 
-// export default function App() {
+// export defaul t function App() {
 //   const [type, setType] = useState(CameraType.back);
 //   const [permission, requestPermission] = Camera.useCameraPermissions();
 
