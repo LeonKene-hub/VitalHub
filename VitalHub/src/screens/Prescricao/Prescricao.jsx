@@ -8,12 +8,19 @@ import { MaterialCommunityIcons } from '@expo/vector-icons';
 import { Title } from "../../components/Title/Style"
 import { Label } from "../../components/FormField/Style"
 import { Line } from "../../components/DoctorModal/Style"
-import { Text } from "react-native"
+import { Image, Text, View } from "react-native"
 import { TouchableOpacity } from "react-native"
 import { LinkMedium } from "../../components/Links/Style"
+import { useState } from "react"
 
 
-export const Prescricao = ({ navigation }) => {
+export const Prescricao = ({ navigation, route }) => {
+    const uri = route.params
+    console.log(uri);
+    const [photoTaked, setPhotoTaked] = useState(false)
+
+
+
     return (
         <Container>
             <ScrollForm>
@@ -33,9 +40,16 @@ export const Prescricao = ({ navigation }) => {
 
                     <FormPhoto>
                         <Label>Exames médicos</Label>
-                        <PhotoField>
-                            <Text style={{ fontFamily: "MontserratAlternates_500Medium" }}>Nenhuma foto informada</Text>
-                        </PhotoField>
+
+                        {photoTaked ? (
+                            <Image
+                            // source={{ uri: `${uri}` }}
+                            />
+                        ) : (
+                            <PhotoField>
+                                <Text style={{ fontFamily: "MontserratAlternates_500Medium" }}>Nenhuma foto informada</Text>
+                            </PhotoField>
+                        )}
                     </FormPhoto>
 
                     <OptionLine>

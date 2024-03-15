@@ -9,6 +9,7 @@ export const ModalPhoto = styled(Modal)`
     background-color: #FBFBFB;
     border-radius: 10px;
     flex-direction: column;
+    justify-content: space-evenly;
     top: 50px;
     margin-top: 16px;
 `
@@ -19,13 +20,23 @@ export const PhotoFile = styled.Image`
 `
 
 export const CloseButton = styled.TouchableOpacity`
-    background-color: red;
-    height: 30px;
-    width: 60px;
+    background-color: transparent;
+    height: 40px;
+    width: 40%;
+    border-radius: 10px;
+    border: 2px black;
+    align-items: center;
+    justify-content: center;
 `
 
 export const SaveButton = styled(CloseButton)`
-    background-color: cyan;
+    background-color: transparent;
+`
+
+export const ButtonText = styled.Text`
+    font-size: 14px;
+    font-family: "Quicksand_600SemiBold";
+    
 `
 
 export const Line = styled.View`
@@ -34,5 +45,5 @@ export const Line = styled.View`
     justify-content: space-between;
     flex-direction: row;
     align-items: center;
-    border: 1px blue;
+    
 ` 

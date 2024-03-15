@@ -1,4 +1,4 @@
-import { Camera, CameraType, CameraPictureOptions } from 'expo-camera';
+import { Camera, CameraType, FlashMode } from 'expo-camera';
 import { FontAwesome } from '@expo/vector-icons';
 import * as Permissions from 'expo-permissions'
 import * as MediaLibrary from 'expo-media-library'
@@ -8,8 +8,9 @@ import { ButtonCamera, ButtonContainer, CameraBody } from './Style';
 import { View } from 'react-native';
 import { PhotoTaked } from '../../components/Photo/Photo';
 
-export const CameraTeste = () => {
+export const CameraTeste = ({ navigation, route}) => {
     const [type, setType] = useState(CameraType.back);
+    const [flash, setFlash] = useState(FlashMode.off)
     const [capturedPhoto, setCapturedPhoto] = useState(null);
     const camRef = useRef(null)
     const [permission, requestPermission] = Camera.useCameraPermissions();
@@ -45,6 +46,10 @@ export const CameraTeste = () => {
     function toggleCameraType() {
         setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
     }
+    function flashActive() {
+        setFlash(current => (current === FlashMode.on ? FlashMode.off : FlashMode.on));
+        console.log(flash)
+    }
 
     async function takePicture() {
         if (camRef) {
@@ -56,7 +61,7 @@ export const CameraTeste = () => {
     async function savePicture() {
         const asset = await MediaLibrary.createAssetAsync(capturedPhoto)
         .then(() => {
-            alert('foto tirada')
+            navigation.navigate('Prescricao', {foto : "asset"})
         })
         .catch(error => {
             console.log("error", error)
@@ -66,7 +71,12 @@ export const CameraTeste = () => {
 
     return (
         <>
-            <CameraBody type={type} ref={camRef} ratio='16:9'>
+            <CameraBody 
+                type={type} 
+                flashMode={flash} 
+                ref={camRef} 
+                ratio='16:9'
+            >
 
                 <ButtonContainer>
                     <ButtonCamera onPress={toggleCameraType}>
@@ -77,8 +87,8 @@ export const CameraTeste = () => {
                         <FontAwesome name='camera' size={23} color="white" />
                     </ButtonCamera>
 
-                    <ButtonCamera>
-                        <FontAwesome name="photo" size={23} color="white" />
+                    <ButtonCamera onPress={flashActive}>
+                        <FontAwesome name="bolt" size={23} color={flash === "on" ? 'green' : 'white'}/>
                     </ButtonCamera>
                 </ButtonContainer>
             </CameraBody>
@@ -93,69 +103,3 @@ export const CameraTeste = () => {
         </>
     )
 }
-
-// import { Camera, CameraType } from 'expo-camera';
-// import { useState } from 'react';
-// import { Button, StyleSheet, Text, TouchableOpacity, View } from 'react-native';
-
-// export defaul t function App() {
-//   const [type, setType] = useState(CameraType.back);
-//   const [permission, requestPermission] = Camera.useCameraPermissions();
-
-//   if (!permission) {
-//     // Camera permissions are still loading
-//     return <View />;
-//   }
-
-//   if (!permission.granted) {
-//     // Camera permissions are not granted yet
-//     return (
-//       <View style={styles.container}>
-//         <Text style={{ textAlign: 'center' }}>We need your permission to show the camera</Text>
-//         <Button onPress={requestPermission} title="grant permission" />
-//       </View>
-//     );
-//   }
-
-//   function toggleCameraType() {
-//     setType(current => (current === CameraType.back ? CameraType.front : CameraType.back));
-//   }
-
-//   return (
-//     <View style={styles.container}>
-//       <Camera style={styles.camera} type={type}>
-//         <View style={styles.buttonContainer}>
-//           <TouchableOpacity style={styles.button} onPress={toggleCameraType}>
-//             <Text style={styles.text}>Flip Camera</Text>
-//           </TouchableOpacity>
-//         </View>
-//       </Camera>
-//     </View>
-//   );
-// }
-
-// const styles = StyleSheet.create({
-//   container: {
-//     flex: 1,
-//     justifyContent: 'center',
-//   },
-//   camera: {
-//     flex: 1,
-//   },
-//   buttonContainer: {
-//     flex: 1,
-//     flexDirection: 'row',
-//     backgroundColor: 'transparent',
-//     margin: 64,
-//   },
-//   button: {
-//     flex: 1,
-//     alignSelf: 'flex-end',
-//     alignItems: 'center',
-//   },
-//   text: {
-//     fontSize: 24,
-//     fontWeight: 'bold',
-//     color: 'white',
-//   },
-// });

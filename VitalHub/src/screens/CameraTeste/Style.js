@@ -15,7 +15,7 @@ export const ButtonContainer = styled.View`
     bottom: 45px;
 `
 
-export const ButtonCamera = styled.TouchableHighlight `
+export const ButtonCamera = styled.TouchableOpacity `
     border: 1px solid white;
     width: 50px;
     height: 50px;

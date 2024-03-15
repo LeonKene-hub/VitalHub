@@ -13,6 +13,9 @@ import { Prescricao } from './src/screens/Prescricao/Prescricao';
 import { Navegacao } from './src/screens/Navegacao/Navegacao';
 import { Perfil } from './src/screens/Perfil/Perfil';
 import { Login } from './src/screens/Login/Login';
+import { LocalMap } from './src/screens/LocalMap/LocalMap';
+import { CameraTeste } from './src/screens/CameraTeste/CameraTeste';
+import { Main } from './src/screens/Main/Main';
 
 //instancia do StackNavigator
 const Stack = createNativeStackNavigator();
@@ -29,9 +32,6 @@ import {
   MontserratAlternates_600SemiBold,
   MontserratAlternates_500Medium
 } from '@expo-google-fonts/montserrat-alternates';
-import { LocalMap } from './src/screens/LocalMap/LocalMap';
-import { CameraTeste } from './src/screens/CameraTeste/CameraTeste';
-import { Main } from './src/screens/Main/Main';
 
 export default function App() {
 
