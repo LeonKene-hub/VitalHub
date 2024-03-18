@@ -10,7 +10,8 @@ export const CancellationModal = ({
     title,
     paragraph,
     visible,
-    onRequestClose
+    onRequestClose,
+    onPress
 }) => {
     return (
         <ModalBody
@@ -21,7 +22,7 @@ export const CancellationModal = ({
                     <Title>{title}</Title>
                     <Paragraph>{paragraph}</Paragraph>
 
-                    <NormalButton fieldWidth={90} title={"Confirmar"} />
+                    <NormalButton fieldWidth={90} title={"Confirmar"} onPress={onPress}/>
 
                     <TouchableOpacity onPress={onRequestClose}>
                         <LinkMedium>Cancelar</LinkMedium>

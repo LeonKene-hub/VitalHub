@@ -11,6 +11,26 @@ import { CardList, ContainerBox, NewConsul } from "./Style"
 import { Header } from "../../components/Header/Header"
 import { useState } from "react"
 
+//notificacoes
+//importa a notificacao
+import * as Notifications from "expo-notifications"
+//solicitar a permissao
+Notifications.requestPermissionsAsync()
+//definir como as notificacoes devem ser tratadas
+Notifications.setNotificationHandler({
+    handleNotification: async () => ({
+        //mostra alerta quando a notificacao for recebida
+        shouldShowAlert: true,
+
+        //configura som ao receber a notificacao
+        shouldPlaySound: true,
+
+        //configura numero de notificaoes no icone do app
+        shouldSetBadge: false,
+    })
+});
+
+
 export const Home = ({ navigation }) => {
     const [statusLista, setStatusLista] = useState("pendente");
     const [profile, setProfile] = useState('Paciente')
@@ -21,6 +41,33 @@ export const Home = ({ navigation }) => {
     const [modalPromptuary, setModalPromptuary] = useState(false);
 
     const [idEncontrado, setIdEncontrado] = useState("");
+
+    //notificacoes
+    //funcao para lidar con a chamada da notificacao
+    const handleNotifications = async () => {
+
+        //obtem o status das permissoes
+        const { status } = await Notifications.getPermissionsAsync()
+
+        //verifica se o usuario concedeu permissao para notificacoes
+        if (status !== "granted") {
+            alert("voce nao deixou as notificacoes ativas");
+            return;
+        }
+
+        //obter o token de enviou de notificacao
+        const token = await Notifications.getExpoPushTokenAsync()
+        console.log(token);
+
+        //agendar uma notificacao parar ser exibida apos 5 segundos
+        await Notifications.scheduleNotificationAsync({
+            content: {
+                title: "Consulta cancelada",
+                body: "voce cancelou a sua consulta"
+            },
+            trigger: null
+        })
+    }
 
     const dados = [
         {
@@ -154,6 +201,7 @@ export const Home = ({ navigation }) => {
             <CancellationModal
                 visible={modalCancel}
                 onRequestClose={() => { setModalCancel(false) }}
+                onPress={handleNotifications}
 
                 tranparent={true}
                 title={"Cancelar consulta"}

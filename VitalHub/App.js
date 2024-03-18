@@ -17,6 +17,25 @@ import { LocalMap } from './src/screens/LocalMap/LocalMap';
 import { CameraTeste } from './src/screens/CameraTeste/CameraTeste';
 import { Main } from './src/screens/Main/Main';
 
+//notificacoes
+//importa a notificacao
+import * as Notifications from "expo-notifications"
+//solicitar a permissao
+Notifications.requestPermissionsAsync()
+//definir como as notificacoes devem ser tratadas
+Notifications.setNotificationHandler({
+  handleNotification: async () => ({
+    //mostra alerta quando a notificacao for recebida
+    shouldShowAlert: true,
+
+    //configura som ao receber a notificacao
+    shouldPlaySound: false,
+
+    //configura numero de notificaoes no icone do app
+    shouldSetBadge: false,
+  })
+});
+
 //instancia do StackNavigator
 const Stack = createNativeStackNavigator();
 
@@ -35,6 +54,7 @@ import {
 
 export default function App() {
 
+  //fontes
   const [fontsLoaded, fontsError] = useFonts({
     MontserratAlternates_700Bold,
     MontserratAlternates_600SemiBold,
@@ -45,6 +65,29 @@ export default function App() {
 
   if (!fontsLoaded && !fontsError) {
     return null;
+  }
+
+  //notificacoes
+  //funcao para lidar con a chamada da notificacao
+  const handleNotifications = async () => {
+
+    //obtem o status das permissoes
+    const { status } = await Notifications.getPermissionsAsync()
+
+    //verifica se o usuario concedeu permissao para notificacoes
+    if (status !== "granted") {
+      alert("voce nao deixou as notificacoes ativas");
+      return;
+    }
+
+    //agendar uma notificacao parar ser exibida apos 5 segundos
+    await Notifications.scheduleNotificationAsync({
+      content: {
+        title: "teste de noificacao",
+        body: "Hello World"
+      },
+      trigger: { seconds: 7 }
+    })
   }
 
   return (
